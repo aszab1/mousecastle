@@ -1,8 +1,8 @@
-import HeroImage from '../../assets/images/welcome-mouse-pic.jpg';
-import English from '../../assets/images/GB-flag.png';
-import German from '../../assets/images/German-flag.png';
-import Hungarian from '../../assets/images/Hungarian-flag.png';
-import { Link } from 'react-router-dom';
+import HeroImage from '../../assets/images/welcome-mouse-pic.jpg'
+import English from '../../assets/images/GB-flag.png'
+import German from '../../assets/images/German-flag.png'
+import Hungarian from '../../assets/images/Hungarian-flag.png'
+import { Link } from 'react-router-dom'
 
 export const Hero = () => {
   return (
@@ -36,5 +36,5 @@ export const Hero = () => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}

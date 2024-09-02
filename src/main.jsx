@@ -5,6 +5,9 @@ import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Hero } from './components/pages/Hero.jsx';
 import { Instructions } from './components/pages/Instructions.jsx';
+import Password from './components/pages/Password.jsx';
+import Submission from './components/pages/Submission.jsx';
+
 
 const router = createBrowserRouter([
   {
@@ -19,6 +22,14 @@ const router = createBrowserRouter([
       {
         path: '/instructions',
         element: <Instructions />,
+      },
+      {
+        path: '/password',
+        element: <Password />,
+      },
+      {
+        path: '/submission',
+        element: <Submission />,
       },
     ],
   },

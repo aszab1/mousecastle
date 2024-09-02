@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        palatino: ['"Palatino Linotype"', 'serif'],
+      },
+    },
   },
   plugins: [],
 }
