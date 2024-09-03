@@ -7,6 +7,7 @@ import { Hero } from './components/pages/Hero.jsx';
 import { Instructions } from './components/pages/Instructions.jsx';
 import Password from './components/pages/Password.jsx';
 import Submission from './components/pages/Submission.jsx';
+import { AllQuestions } from './components/pages/AllQuestions.jsx';
 
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: '/instructions',
         element: <Instructions />,
+      },
+      {
+        path:'/questions',
+        element: <AllQuestions />
       },
       {
         path: '/password',
