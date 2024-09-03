@@ -104,14 +104,35 @@ export const Passwords = [
     lang: 'en',
     pass: 'BUTTER COOKIE',
     codes: [
-      '1/1', '5/2', '1/4', '7/5', '1/6', '6/3', '2/12', '6/2', '2/9','4/7','3/5','6/5'
+      {codeLocation: '1/1', colorCode: '#feffd6', borderColorCode: '#fbcf3d'},
+      {codeLocation: '5/2', colorCode: '#ff75b0', borderColorCode: '#a31a73'},
+      {codeLocation: '1/4', colorCode: '#feffd6', borderColorCode: '#fbcf3d'},
+      {codeLocation: '7/5', colorCode: '#81d8ff', borderColorCode: '#077bae'},
+      {codeLocation: '1/6', colorCode: '#feffd6', borderColorCode: '#fbcf3d'},
+      {codeLocation: '6/3', colorCode: '#b9ff8e', borderColorCode: '#34a51e'},
+      {codeLocation: '2/12', colorCode: '#ebdbff', borderColorCode: '#51367a'},
+      {codeLocation: '6/2', colorCode: '#b9ff8e', borderColorCode: '#34a51e'},
+      {codeLocation: '2/9', colorCode: '#ebdbff', borderColorCode: '#51367a'},
+      {codeLocation: '4/7', colorCode: '#ffc5b3', borderColorCode: '#cc4241'},
+      {codeLocation: '3/5', colorCode: '#e7ffa7', borderColorCode: '#2f712f'},
+      {codeLocation: '6/5', colorCode: '#b9ff8e', borderColorCode: '#34a51e'},
     ]
   },
   {
     lang: 'hun',
     pass: 'MÁKOS BEJGLI',
     codes: [
-      '5/1', '6/7', '3/6','3/5','4/7','1/3','7/2','1/6','6/5','2/5','7/7'
+      {codeLocation: '5/1', colorCode: '#ff75b0', borderColorCode: '#a31a73'},
+      {codeLocation: '6/7', colorCode: '#b9ff8e', borderColorCode: '#34a51e'},
+      {codeLocation: '3/6', colorCode: '#e7ffa7', borderColorCode: '#2f712f'},
+      {codeLocation: '3/5', colorCode: '#e7ffa7', borderColorCode: '#2f712f'},
+      {codeLocation: '4/7', colorCode: '#ffc5b3', borderColorCode: '#cc4241'},
+      {codeLocation: '1/3', colorCode: '#feffd6', borderColorCode: '#fbcf3d'},
+      {codeLocation: '7/2', colorCode: '#81d8ff', borderColorCode: '#077bae'},
+      {codeLocation: '1/6', colorCode: '#feffd6', borderColorCode: '#fbcf3d'},
+      {codeLocation: '6/5', colorCode: '#b9ff8e', borderColorCode: '#34a51e'},
+      {codeLocation: '2/5', colorCode: '#ebdbff', borderColorCode: '#51367a'},
+      {codeLocation: '7/7', colorCode: '#81d8ff', borderColorCode: '#077bae'},
     ]
   },
   {

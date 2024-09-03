@@ -20,10 +20,10 @@ export const Instructions = () => {
 
   return (
     <>
-      <section id="instructions" className="flex flex-col gap-8 h-full items-center justify-center">
+      <section id="instructions" className="flex flex-col gap-4 items-center justify-center max-h-full">
         <img src={InstructionsImg} alt="instructions-page-image" />
         <h1 className="text-4xl italic bold">{t('welcome')}</h1>
-        <div className="welcome-text flex flex-col gap-4 text-center bold">
+        <div className="welcome-text flex flex-col gap-2 text-center bold">
         <p>{t('intro1')}</p>
         <p>{t('intro2')}</p>
         <p>{t('clue')}</p>
