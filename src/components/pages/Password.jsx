@@ -3,9 +3,16 @@ import { Link } from 'react-router-dom';
 import PasswordMouse from '../../assets/images/writing-mouse1.jpg';
 import { Passwords } from '../../assets/questions';
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Password() {
   const inputRefs = useRef([]);
+  const { i18n } = useTranslation()
+  const currentLang = i18n.language
+
+  console.log(currentLang)
+
+  const passwordData = Passwords.find((password) => password.lang === currentLang)
 
   const handleInputChange = (e, index) => {
     const { value } = e.target;
@@ -26,7 +33,8 @@ export default function Password() {
           <p>Collect all the letters needed to fill in the password.</p>
         </div>
         <div className="password-boxes h-full flex flex-wrap gap-2 justify-center">
-          {Passwords[0].codes.map((code, index) => (
+          {/* {Passwords[0].codes.map((code, index) => ( */}
+          {passwordData && passwordData.codes.map((code, index) => (
             <div className="single-box flex flex-col gap-0 items-center" key={index}>
               <label htmlFor="" className="italic text-sm">
                 {code.codeLocation}

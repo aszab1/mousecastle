@@ -6,5 +6,37 @@
   "hint": "I can help you with a clue to the password:",
   "dessertHint": "It's my friend, Count Chester Gorgonzola's favorite dessert!",
   "goodLuck": "Good luck and have fun!",
-  "start": "Start"
+  "start": "Start",
+  "0": {
+    "question": "Baron Alexander Castlehouse has found some lovely wall paintings in the entrance hall. What is the part of the angel's foot that is closest to you?",
+    "answer": "BIG TOE"
+  },
+  "1": {
+    "question": "When I was little, Grandma Minka told me a story about how the Count built this beautiful palace. At first, he built just a small part. As time went on and the Count gained more money, he kept adding to the palace. Now there's plenty of space for all of us! What is the Count's family name?",
+    "answer": "GRASSALKOVICH"
+  },
+  "2": {
+    "question": "Here in the Palace, we have had many guests. King Franz Joseph I spent a lot of time here, but he usually always worked. I found that very boring! In the picture, what am I doing?",
+    "answer": "YAWNING"
+  },
+  "3": {
+    "question": "If you had looked out of this window 150 years ago, you would have seen a gorgeous lake. The lake was named after the animals that swam in it. What is the name of this animal?",
+    "answer": "SWAN LAKE"
+  },
+  "4": {
+    "question": "Queen Elizabeth had beautiful long hair that took hours to brush every day. While her maids brushed her hair, she would study languages, including Greek and Ancient Greek. Here in Gödöllő, Queen Elizabeth spoke this language with her youngest daughter, Marie Valerie:",
+    "answer": "HUNGARIAN"
+  },
+  "5": {
+    "question": "Queen Elizabeth was very fit because she loved sports. Her favorite was...",
+    "answer": "HORSE RIDING"
+  },
+  "6": {
+    "question": "The royal couple's youngest daughter, Marie Valerie, lived in this beautiful powder blue suite. Princess Marie Valerie had a very strict schedule with a lot to study. My friend, Count Chester Gorgonzola, was often inspired by the Princess. What will the Count do when he goes home?",
+    "answer": "PAINT"
+  }
+
+
 }
+
+

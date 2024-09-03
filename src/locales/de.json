@@ -6,5 +6,33 @@
   "hint": "Ich verrate dir:",
   "dessertHint": "dass das Lösungswort der Lieblingskuchen meines Freundes, des Grafen Geza von Gorgonzola ist.",
   "goodLuck": "Viel Glück und viel Spaß!",
-  "start": "Starten"
+  "start": "Starten",
+  "0": {
+    "question": "Hier, in der Vorhalle entdeckte mein Freund, Baron Alexander von Katzenschloss diese schönen Wandmalereien mit den Engeln. Schau mal nach oben! Der uns nächst dargestellte Körperteil des Engels ist die",
+    "answer": "ZEHE"
+  },
+  "1": {
+    "question": "Als ich noch klein war, erzählte mir meine Oma Minka, dass dieses Schloss von einem bekannten, ungarischen Grafen erbaut wurde. Zuerst ließ er hier ein kleines Schloss bauen und später vergrößerte er es immer, wenn er reicher wurde. So haben wir hier genug Platz für uns. Wie war der Familienname des Grafen?",
+    "answer": "GRASSALKOVICH"
+  },
+  "2": {
+    "question": "Die königliche Familie war oft bei mir im Schloss zu Besuch. König Franz Joseph I. verbrachte seine Zeit auch hier mit viel Arbeit. Ich war dessen schon überdrüssig, deswegen siehst du mich auf dem Bild",
+    "answer": "GÄHNEN"
+  },
+  "3": {
+    "question": "Wenn du vor 150 Jahren zu diesem Fenster hinausgesehen hättest, hättest du einen schönen Teich vor dem Schloss gefunden. Der Teich wurde nach den Vögeln benannt, die damals im Wasser schwammen. Dort gab es früher einen",
+    "answer": "SCHWANEN TEICH"
+  },
+  "4": {
+    "question": "Die Pflege der wunderschönen Haare der Königin Elisabeth dauerte mehrere Stunden lang. Die Königin nutzte diese Zeit, sie lernte Fremdsprachen. Zum Beispiel: Altgriechisch, Neugriechisch. Bei mir, in Gödöllő sprach die Königin mit ihrer Tochter, Marie Valerie nur",
+    "answer": "UNGARISCH"
+  },
+  "5": {
+    "question": "Die Königin Elisabeth war sehr schlank, weil sie viel Sport trieb. Eine von ihren Lieblingssportarten war das",
+    "answer": "REITEN"
+  },
+  "6": {
+    "question": "Die kleinste Tochter des königlichen Paares, Marie Valerie wohnte in diesem schönen „himmelblauen” Zimmer. Sie hatte eine strenge Tagesordnung, sie musste viel lernen. Meinem Freund, dem Grafen Geza von Gorgonzola gefielen sehr die Bilder von Marie Valerie. Was wird bloß mein Freund machen, wenn er nach Hause geht?",
+    "answer": "MALEN"
+  }
 }
