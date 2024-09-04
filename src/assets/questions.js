@@ -28,7 +28,7 @@ export const Questions = [
     img_url: Image3,
     bg_border_code: '#2f712f',
     bg_clr_code: '#e7ffa7',
-    equestion: '2.question',
+    question: '2.question',
     answer: '2.answer',
   },
   {

@@ -10,6 +10,7 @@ import Submission from './components/pages/Submission.jsx';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n';
 import { AllQuestions } from './components/pages/AllQuestions.jsx';
+import SingleQuestion from './components/pages/SingleQuestion.jsx';
 
 
 const router = createBrowserRouter([
@@ -37,7 +38,10 @@ const router = createBrowserRouter([
       {
         path: '/submission',
         element: <Submission />,
-      },
+      },{
+        path: '/question/:id',
+        element: <SingleQuestion />,
+      }
     ],
   },
 ]);
