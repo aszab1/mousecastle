@@ -13,12 +13,12 @@ export default function SingleQuestion() {
   const question = Questions.find(q => q.id === parseInt(id))
   const storageKey = `question-${id}-input`
   const [userInput, setUserInput] = useState(() => {
-    const savedInput = localStorage.getItem(storageKey)
+    const savedInput = sessionStorage.getItem(storageKey)
     
       return savedInput ? JSON.parse(savedInput) : Array(t(question.answer).length).fill('')
     
   })
-  const correctAnswer = t(question.answer) === userInput.join('').toUpperCase()
+  // const correctAnswer = t(question.answer) === userInput.join('').toUpperCase()
   const [selectedBox, setSelectedBox] = useState(null)
   const hint = t(question.answer).toUpperCase().split('')
   // new array with spaces followed by the second word 
@@ -46,7 +46,7 @@ export default function SingleQuestion() {
     const newInput = [...userInput]
     newInput[index] = value
     setUserInput(newInput)
-    localStorage.setItem(storageKey, JSON.stringify(newInput))
+    sessionStorage.setItem(storageKey, JSON.stringify(newInput))
 
     // Move focus to the next input field
     if (value.length === 1 && index < t(question.answer).length - 1) {
@@ -57,7 +57,7 @@ export default function SingleQuestion() {
 
   useEffect(() => {
 
-    const savedInput = localStorage.getItem(storageKey)
+    const savedInput = sessionStorage.getItem(storageKey)
     setUserInput(savedInput ? JSON.parse(savedInput) : Array(t(question.answer).length).fill(''))
 
 
@@ -96,21 +96,22 @@ export default function SingleQuestion() {
                     id={`input-${i}`}
                     maxLength={1}
                     autoCapitalize="on"
-                    className="border-4 rounded-md size-8 aspect-square text-center text-lg font-bold"
+                    className="border-4 rounded-md size-10 aspect-square text-center text-lg font-bold"
                     style={{
                       background: question.bg_clr_code,
                       borderColor: question.bg_border_code,
-                      margin: '2px',
+                      margin: '0.5px',
                       cursor: 'pointer',
                       transition: 'opacity 0.3s ease',
                       boxShadow: selectedBox === i ? '0 0 5px 2px rgba(0, 0, 0, 1)' : 'none',
+                      
                     }}
                     onClick={() => setSelectedBox(i)}
                     ref={(el) => (inputRefs.current[i] = el)} // Assign ref to each input
                     onChange={(e) => handleInputChange(e, i)} // Handle input change
                     value={userInput[i]?.toUpperCase() || ''}
                   />
-                  {id < '3' || id > '3' && i === 1 && (
+                  {id < 3 || id > 3 && i === 1 && (
                     <div style={{
                       position: 'absolute',
                       top: '50%',
@@ -144,7 +145,7 @@ export default function SingleQuestion() {
 
 
           </div>
-          <div style={{ textAlign: 'center', marginTop: '10px' }}>{correctAnswer && <p> You Guessed Correct Well Done!</p>}</div>
+          {/* <div style={{ textAlign: 'center', marginTop: '10px' }}>{correctAnswer && <p> You Guessed Correct Well Done!</p>}</div> */}
         </section>
 
         <section className="buttons"
@@ -160,7 +161,7 @@ export default function SingleQuestion() {
                   style={{
                     background: question.bg_clr_code,
                     borderColor: question.bg_border_code
-                  }} key={question.id} to={`/question/${question.id}?lang=${i18n.language}`}>
+                  }} key={question.id} to={`/question/${question.id}`}>
                   {question.id + 1}
                 </Link>
               )

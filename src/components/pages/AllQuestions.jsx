@@ -15,16 +15,16 @@ export const AllQuestions = () => {
 
 
   // answers give to questions
-  const [answers, setAnswers] = useState({
-    0: localStorage.getItem(`question-${0}-input`)|| '',
-    1: localStorage.getItem(`question-${1}-input`)|| '',
-    2: localStorage.getItem(`question-${2}-input`)|| '',
-    3: localStorage.getItem(`question-${3}-input`)|| '',
-    4: localStorage.getItem(`question-${4}-input`)|| '',
-    5: localStorage.getItem(`question-${5}-input`)|| '',
-    6: localStorage.getItem(`question-${6}-input`)|| '',
-  });
-
+  const [answers, setAnswers] = useState([{
+    0: sessionStorage.getItem(`question-${0}-input`)|| '',
+    1: sessionStorage.getItem(`question-${1}-input`)|| '',
+    2: sessionStorage.getItem(`question-${2}-input`)|| '',
+    3: sessionStorage.getItem(`question-${3}-input`)|| '',
+    4: sessionStorage.getItem(`question-${4}-input`)|| '',
+    5: sessionStorage.getItem(`question-${5}-input`)|| '',
+    6: sessionStorage.getItem(`question-${6}-input`)|| '',
+  }]);
+  
   const passwordRef = useRef(null);
   
 
