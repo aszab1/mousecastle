@@ -12,7 +12,7 @@ export default function SingleQuestion() {
   const { id } = useParams()
   const question = Questions.find((q) => q.id === parseInt(id, 15))
   const storageKey = `question-${id}-input`
-
+  console.log(t)
   // useState init. to handle array vs string
   const [userInput, setUserInput] = useState(() => {
     const savedInput = sessionStorage.getItem(storageKey)
@@ -31,13 +31,22 @@ export default function SingleQuestion() {
       return Array(t(question.answer).length).fill('')
     }
   })
-    
-  
+
+
   const [selectedBox, setSelectedBox] = useState(null)
   const hint = t(question.answer).toUpperCase().split('')
-  // new array with spaces followed by the second word 
-  const hint2 = Array(5).fill(' ').concat(hint.slice(5));
 
+
+  function replaceWithSpaces(str) {
+    const index = str.indexOf(' ')
+    if (index === -1) {
+      
+      return str.split('')
+    }
+    const spaces = ' '.repeat(index)
+    const replaced = spaces + str.slice(index)
+    return replaced.split('')
+  }
 
   const gradientBorderStyle = {
     textAlign: 'center',
@@ -45,10 +54,14 @@ export default function SingleQuestion() {
     marginBottom: '5px',
     border: 'solid',
     borderWidth: '5px',
-    borderImage: 'linear-gradient(to right, #fbcf3d, #51367a, #2f712f, #cc4241, #a31a73, #34a51e, #077bae) 1',
-    background: 'linear-gradient(to right, #feffd6, #ebdbff, #e7ffa7, #ffc5b3, #ff75b0, #b9ff8e, #81d8ff)',
+    // borderImage: 'linear-gradient(to right, #fbcf3d, #51367a, #2f712f, #cc4241, #a31a73, #34a51e, #077bae) 1',
+    // background: 'linear-gradient(to right, #feffd6, #ebdbff, #e7ffa7, #ffc5b3, #ff75b0, #b9ff8e, #81d8ff)',
+    background: question.bg_clr_code,
+    borderColor: question.bg_border_code,
     borderRadius: '10px',
     padding: '10px',
+    fontWeight: 'bold'
+    
 
 
   };
@@ -128,14 +141,14 @@ export default function SingleQuestion() {
                       cursor: 'pointer',
                       transition: 'opacity 0.3s ease',
                       boxShadow: selectedBox === i ? '0 0 5px 2px rgba(0, 0, 0, 1)' : 'none',
-                      
+
                     }}
                     onClick={() => setSelectedBox(i)}
                     ref={(el) => (inputRefs.current[i] = el)} // Assign ref to each input
                     onChange={(e) => handleInputChange(e, i)} // Handle input change
                     value={userInput[i]?.toUpperCase() || ''}
                   />
-                  {id < 3 || id > 3 && i === 1 && (
+                  {(question.id < 3 && i === 1 || (question.id > 3 && i === 1)) && (
                     <div style={{
                       position: 'absolute',
                       top: '50%',
@@ -161,7 +174,7 @@ export default function SingleQuestion() {
                       pointerEvents: 'none',
                       userSelect: 'none',
                     }}>
-                      {hint2[i]}
+                      {replaceWithSpaces(t(question.answer))[i]}
                     </div>
                   )}
                 </div>
@@ -178,7 +191,13 @@ export default function SingleQuestion() {
             <Link style={gradientBorderStyle} to={`/questions`}>Back To Questions</Link>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+          <div style={{ display: 'flex', fontSize: '25px' }}>
+
+            {question.id >= 1 && <Link to={`/question/${question.id - 1}`}>◀️</Link>}
+            {question.id < 6 && <Link style={{ marginLeft: 'auto' }} to={`/question/${question.id + 1}`}>▶️</Link>}
+          </div>
+
+          {/* <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
             {Questions.map((question) => {
               return (
                 <Link className="border-4 rounded-md size-9 aspect-square text-center text-lg font-bold mb-5"
@@ -189,7 +208,7 @@ export default function SingleQuestion() {
                   {question.id + 1}
                 </Link>
               )
-            })}</div>
+            })}</div> */}
 
 
 
