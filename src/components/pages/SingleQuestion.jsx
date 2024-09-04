@@ -14,7 +14,9 @@ export default function SingleQuestion() {
   const storageKey = `question-${id}-input`
   const [userInput, setUserInput] = useState(() => {
     const savedInput = localStorage.getItem(storageKey)
-    return savedInput ? JSON.parse(savedInput) : Array(t(question.answer).length).fill('')
+    
+      return savedInput ? JSON.parse(savedInput) : Array(t(question.answer).length).fill('')
+    
   })
   const correctAnswer = t(question.answer) === userInput.join('').toUpperCase()
   const [selectedBox, setSelectedBox] = useState(null)
