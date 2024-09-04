@@ -52,7 +52,7 @@ export default function SingleQuestion() {
 
         <section className="question">
           <h2>Question {question.id}</h2>
-          <p> {question.question}</p>
+          <p> {t(question.question)}</p>
 
         </section>
 
@@ -89,14 +89,14 @@ export default function SingleQuestion() {
         <section className="buttons"
           style={{ display: 'flex', justifyContent: 'space-between', width: '100%', fontSize: '24px' }}>
           
-            {id > 1 ? (
+            {id > 0 ? (
               <Link to={`/question/${question.id - 1}?lang=${i18n.language}`}>◀️</Link>
             ) : (
               <Link to={`/questions`}>◀️</Link>
             )}
           
           {id < 6 && <Link to={`/question/${question.id + 1}?lang=${i18n.language}`}> ▶️</Link>} 
-           
+
         </section>
       </div>
     </>

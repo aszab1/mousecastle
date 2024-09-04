@@ -33,7 +33,7 @@ export const AllQuestions = () => {
         <div className="questions w-full flex flex-col h-screen py-6 gap-2">
           <h1 className="text-sm italic">Click and solve all the questions, when click and solve the password!</h1>
           {Questions.map((question) => (
-            <Link to={`/question/${question.id + 1}?lang=${i18n.language}`} key={question.id}>
+            <Link to={`/question/${question.id }?lang=${i18n.language}`} key={question.id}>
               <div
                 className="py-2 border-b-4 rounded flex items-center text-lg justify-between"
                 id={question.id}
