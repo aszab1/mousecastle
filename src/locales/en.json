@@ -38,7 +38,7 @@
   "introToAllQs": "Click and answer all the questions, then click to solve the password!",
   "solvePwd": "Solve Password",
   "howTo" : "How to Solve the Password",
-  "pwdExplanation1": "Look at each clue like 1/5. This means take the 5th letter from your first answer.",
+  "pwdExplanation1": "Look at each clue like 5/2. This means take the second letter from your fifth answer.",
   "pwdExplanation2": "Collect all the letters needed to fill in the password.",
   "pwdExplanation3": "When you're done, press submit to see what to do next!",
   "submit": "Submit",

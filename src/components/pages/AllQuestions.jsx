@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Questions } from '../../assets/questions.js';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
 import Password from './Password.jsx';
 import { useTranslation } from 'react-i18next';
@@ -11,6 +11,8 @@ export const AllQuestions = () => {
   // 't' function from useTranslation dynamically renders text based on selected language 
   const { t } = useTranslation()
   const passwordRef = useRef(null)
+  const [ scrollToPassword, setScrollToPassword ] = useState(false)
+  const { hash } = useLocation() // destructure hash from location
 
   
 
@@ -31,11 +33,12 @@ export const AllQuestions = () => {
   )
   
   useEffect(() => {
-    if (window.location.hash === '#solve-password') {
+    if (hash === '#solve-password' && !scrollToPassword) {
       // Scroll to the Password section
       passwordRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      setScrollToPassword(true)
     }
-  }, [])
+  }, [hash, scrollToPassword])
 
   return (
     <>
