@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function Password() {
   const inputRefs = useRef([]);
-  const { i18n } = useTranslation()
+  const { t, i18n } = useTranslation()
   const currentLang = i18n.language
 
   console.log(currentLang)
@@ -28,9 +28,9 @@ export default function Password() {
       <section id="password" className="flex flex-col gap-4 items-center justify-between h-full">
         <img src={PasswordMouse} alt="image of Prince Magnus Mousecastle writing a letter" />
         <div className="flex flex-col gap-4 text-center mb-auto">
-          <h1 className="text-2xl">How to Solve the Password</h1>
-          <p>Look at each clue like 1/5, which means take the 5th letter from your answer to the first question.</p>
-          <p>Collect all the letters needed to fill in the password.</p>
+          <h1 className="text-2xl">{t('howTo')}</h1>
+          <p>{t('pwdExplanation1')}</p>
+          <p>{t('pwdExplanation2')}</p>
         </div>
         <div className="password-boxes h-full flex flex-wrap gap-2 justify-center">
           {/* {Passwords[0].codes.map((code, index) => ( */}
@@ -55,9 +55,9 @@ export default function Password() {
             </div>
           ))}
         </div>
-        <p className="text-center">When you&apos;re done, press submit to see what to do next!</p>
+        <p className="text-center">{t('pwdExplanation3')}</p>
         <Link to="/submission" className="flex flex-col items-center text-center gap-4">
-          <button className="bg-blue-100 py-4 px-16 rounded-md">Submit</button>
+          <button className="bg-blue-100 py-4 px-16 rounded-md">{t('submit')}</button>
         </Link>
       </section>
     </>

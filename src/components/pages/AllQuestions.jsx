@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Questions } from '../../assets/questions.js';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
 import Password from './Password.jsx';
 import { useTranslation } from 'react-i18next';
@@ -26,12 +26,20 @@ export const AllQuestions = () => {
   });
 
   const passwordRef = useRef(null);
+  
+
+  useEffect(() => {
+    if (window.location.hash === '#solve-password') {
+      // Scroll to the Password section
+      passwordRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [])
 
   return (
     <>
       <section id="all-questions" className="flex flex-col justify-between items-center">
         <div className="questions w-full flex flex-col h-screen py-6 gap-2">
-          <h1 className="text-sm italic">Click and solve all the questions, when click and solve the password!</h1>
+          <h1 className="text-sm italic">{t('introToAllQs')}</h1>
           {Questions.map((question) => (
             <Link to={`/question/${question.id }?lang=${i18n.language}`} key={question.id}>
               <div
@@ -59,10 +67,11 @@ export const AllQuestions = () => {
             </Link>
           ))}
           <button
+          id="solve-pwd"
             onClick={() => passwordRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' })}
             className="text-md bg-amber-400 py-2 px-10 my-auto rounded"
           >
-            Solve password!
+            {t('solvePwd')}
           </button>
         </div>
         <div className="h-screen py-6" ref={passwordRef}>

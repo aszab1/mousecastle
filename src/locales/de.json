@@ -34,5 +34,21 @@
   "6": {
     "question": "Die kleinste Tochter des königlichen Paares, Marie Valerie wohnte in diesem schönen „himmelblauen” Zimmer. Sie hatte eine strenge Tagesordnung, sie musste viel lernen. Meinem Freund, dem Grafen Geza von Gorgonzola gefielen sehr die Bilder von Marie Valerie. Was wird bloß mein Freund machen, wenn er nach Hause geht?",
     "answer": "MALEN"
-  }
+  },
+  "introToAllQs": "Klicke und beantworte alle Fragen, dann klicke, um das Passwort zu lösen!",
+  "solvePwd": "Passwort Lösen",
+  "howTo" : "So löst du das Passwort",
+  "pwdExplanation1": "Schau dir jeden Hinweis an, wie 1/5. Das bedeutet, nimm den 5. Buchstaben aus deiner ersten Antwort.",
+  "pwdExplanation2": "Sammle alle Buchstaben, die du brauchst, um das Passwort zu bilden.",
+  "pwdExplanation3": "Wenn du fertig bist, drücke Absenden, um zu sehen, was als Nächstes zu tun ist!",
+  "submit": "Absenden",
+  "pwdConfimation": "Dein Passwort ist:",
+  "submissionQ": "Bist du dir nicht sicher, ob es richtig ist?",
+  "changePwdBtn": "Passwort ändern",
+  "congrats": "Glückwunsch, dass du das Rätsel gelöst und das Passwort entdeckt hast!",
+  "goToTourinform": "Gehe jetzt zum Tourinform-Büro, um deinen Preis abzuholen!",
+  "goToNostalgia": "Und vergiss nicht, den Nostalgiafoto-Laden zu besuchen!",
+  "farewell": "Bis Zum nächsten Mal!",
+  "bye": "Tschüss! Auf Wiedersehen!",
+  "magnus": "Herzog Elmar von Mausburg"
 }
