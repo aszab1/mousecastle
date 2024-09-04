@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import farewellMouse from '../../assets/images/bandw-mouse.jpg'
+import { PrimaryButton } from './PrimaryButton'
 
 export default function Submission() {
 
@@ -10,9 +11,10 @@ export default function Submission() {
       <h1>Your Password is:</h1>
       <p>Don&apos;t think it&apos;s right?</p>
       <Link
-        to='/password'
+        to='/questions'
+        className='w-full'
       >
-        <button className='bg-blue-100 py-4 px-16 rounded-md'>Change Password</button>
+        <PrimaryButton text={'Change Password'}/>
       </Link>
       <p>Else..</p>
       <h1>Congratulations on solving the riddle and discovering the password!</h1>
@@ -24,7 +26,6 @@ export default function Submission() {
         <p>Bye Bye!</p>
         </div>
         <p>Prince Magnus Mousecastle</p>
-      
 </section>
     </>
   )
