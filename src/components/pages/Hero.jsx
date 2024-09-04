@@ -4,7 +4,7 @@ import German from '../../assets/images/German-flag.png'
 import Hungarian from '../../assets/images/Hungarian-flag.png'
 import { useNavigate } from 'react-router-dom'
 import i18next from 'i18next'
-import { Link } from 'react-router-dom'
+
 
 export const Hero = () => {
 
@@ -12,7 +12,9 @@ export const Hero = () => {
 
   const handleLanguageChange = (lang) => {
     i18next.changeLanguage(lang)
+
     localStorage.setItem('language', lang)
+    sessionStorage.clear()
     navigate('/instructions')
 
   }

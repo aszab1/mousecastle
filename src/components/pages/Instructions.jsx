@@ -33,7 +33,7 @@ export const Instructions = () => {
         <p>{t('goodLuck')}</p>
         </div>
         <Link to="/questions" className='w-full'>
-        <PrimaryButton text={'Start'}/>
+        <PrimaryButton text={t('start')}/>
         </Link>
       </section>
     </>

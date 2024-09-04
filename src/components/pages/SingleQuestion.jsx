@@ -8,17 +8,31 @@ import { useTranslation } from 'react-i18next'
 
 export default function SingleQuestion() {
   const inputRefs = useRef([])
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const { id } = useParams()
-  const question = Questions.find(q => q.id === parseInt(id))
+  const question = Questions.find((q) => q.id === parseInt(id, 15))
   const storageKey = `question-${id}-input`
+
+  // useState init. to handle array vs string
   const [userInput, setUserInput] = useState(() => {
     const savedInput = sessionStorage.getItem(storageKey)
-    
-      return savedInput ? JSON.parse(savedInput) : Array(t(question.answer).length).fill('')
-    
+
+    // Check if the saved input is a string or an array
+    if (savedInput) {
+      try {
+        const parsedInput = JSON.parse(savedInput)
+        // If parsed input is already an array, use it; otherwise, split the string
+        return Array.isArray(parsedInput) ? parsedInput : parsedInput.split('')
+      } catch (error) {
+        console.error("Error parsing:", error);
+        return Array(t(question.answer).length).fill('')
+      }
+    } else {
+      return Array(t(question.answer).length).fill('')
+    }
   })
-  // const correctAnswer = t(question.answer) === userInput.join('').toUpperCase()
+    
+  
   const [selectedBox, setSelectedBox] = useState(null)
   const hint = t(question.answer).toUpperCase().split('')
   // new array with spaces followed by the second word 
@@ -46,7 +60,8 @@ export default function SingleQuestion() {
     const newInput = [...userInput]
     newInput[index] = value
     setUserInput(newInput)
-    sessionStorage.setItem(storageKey, JSON.stringify(newInput))
+    // Save the input as a plain string 
+    sessionStorage.setItem(storageKey, newInput.join(''))
 
     // Move focus to the next input field
     if (value.length === 1 && index < t(question.answer).length - 1) {
@@ -56,9 +71,18 @@ export default function SingleQuestion() {
   }
 
   useEffect(() => {
-
     const savedInput = sessionStorage.getItem(storageKey)
-    setUserInput(savedInput ? JSON.parse(savedInput) : Array(t(question.answer).length).fill(''))
+    if (savedInput) {
+      try {
+        const parsedInput = JSON.parse(savedInput)
+        setUserInput(Array.isArray(parsedInput) ? parsedInput : parsedInput.split(''))
+      } catch (error) {
+        console.error("Error parsing:", error)
+        setUserInput(Array(t(question.answer).length).fill(''))
+      }
+    } else {
+      setUserInput(Array(t(question.answer).length).fill(''))
+    }
 
 
     setSelectedBox(null)
@@ -76,13 +100,13 @@ export default function SingleQuestion() {
         </section>
 
         <section className="question">
-          <h2 style={{ textAlign: 'center' }}>Question {question.id + 1}</h2>
+          <h2 style={{ textAlign: 'center' }}>{t('question')} {question.id + 1}</h2>
           <p> {t(question.question)}</p>
 
         </section>
 
         <section className="answer" >
-          <h2 style={{ textAlign: 'center' }}>Answer</h2>
+          <h2 style={{ textAlign: 'center' }}>{t('answer')}</h2>
           <div style={{ display: 'flex', flexWrap: "wrap" }}>
             {t(question.answer).split('').map((c, i) => (
               c === ' ' ? (
