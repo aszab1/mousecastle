@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import InstructionsImg from '../../assets/images/mates-mouses.jpg';
+import { PrimaryButton } from './PrimaryButton';
 
 export const Instructions = () => {
 
@@ -31,8 +32,8 @@ export const Instructions = () => {
         <p className='italic text-md text-amber-500'>{t('dessertHint')}</p>
         <p>{t('goodLuck')}</p>
         </div>
-        <Link to="/questions">
-        <button className="bg-amber-500 py-4 px-16 rounded-md">{t('start')}</button>
+        <Link to="/questions" className='w-full'>
+        <PrimaryButton text={'Start'}/>
         </Link>
       </section>
     </>
