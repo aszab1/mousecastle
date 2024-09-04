@@ -34,8 +34,23 @@
   "6": {
     "question": "The royal couple's youngest daughter, Marie Valerie, lived in this beautiful powder blue suite. Princess Marie Valerie had a very strict schedule with a lot to study. My friend, Count Chester Gorgonzola, was often inspired by the Princess. What will the Count do when he goes home?",
     "answer": "PAINT"
-  }
-
+  },
+  "introToAllQs": "Click and answer all the questions, then click to solve the password!",
+  "solvePwd": "Solve Password",
+  "howTo" : "How to Solve the Password",
+  "pwdExplanation1": "Look at each clue like 1/5. This means take the 5th letter from your first answer.",
+  "pwdExplanation2": "Collect all the letters needed to fill in the password.",
+  "pwdExplanation3": "When you're done, press submit to see what to do next!",
+  "submit": "Submit",
+  "pwdConfimation": "Your Password is:",
+  "submissionQ": "Not sure it's right?",
+  "changePwdBtn": "Change Password",
+  "congrats": "Congratulations on solving the riddle and discovering the password!",
+  "goToTourinform": "Now, go to the Tourinform Office to collect your prize!",
+  "goToNostalgia": "And don't forget to visit the Nostalgiafoto shop!",
+  "farewell": "We hope to see you again soon!",
+  "bye": "Bye Bye!",
+  "magnus": "Prince Magnus Mousecastle"
 
 }
 

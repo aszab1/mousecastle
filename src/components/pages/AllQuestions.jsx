@@ -1,14 +1,18 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Questions } from '../../assets/questions.js';
 import { Link } from 'react-router-dom';
 import { MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
 import Password from './Password.jsx';
 import { useTranslation } from 'react-i18next';
-import { PrimaryButton } from './PrimaryButton.jsx';
+
+
 
 export const AllQuestions = () => {
-  // 't' function from useTranslation dynamically renders text based on selected language
-  const { t, i18n } = useTranslation();
+  // 't' function from useTranslation dynamically renders text based on selected language 
+  const { t, i18n } = useTranslation()
+
+  
+
 
   // answers give to questions
   const [answers, setAnswers] = useState({
@@ -22,48 +26,53 @@ export const AllQuestions = () => {
   });
 
   const passwordRef = useRef(null);
+  
+
+  useEffect(() => {
+    if (window.location.hash === '#solve-password') {
+      // Scroll to the Password section
+      passwordRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [])
 
   return (
     <>
-      <section id="all-questions" className="flex flex-col justify-evenly items-center">
-        <div className="questions w-full flex flex-col gap-2" style={{ height: 'calc(100vh - 48px)' }}>
-          <h1 className="text-sm italic">Click and solve all the questions, when click and solve the password!</h1>
-          <div className="questions flex flex-col gap-3">
-            {Questions.map((question) => (
-              <Link to={`/question/${question.id }?lang=${i18n.language}`} key={question.id}>
-                <div
-                  className="py-3 border-b-4 rounded flex items-center text-lg justify-between"
-                  id={question.id}
-                  style={{ borderColor: question.bg_border_code }}
-                >
-                  <div className="flex items-center flex-wrap gap-2">
-                    {t(question.answer)
-                      .split(' ')
-                      .map((word, index) => (
-                        <div className={`word-${index} flex flex-wrap`} key={index}>
-                          {word.split('').map((char, index) => (
-                            <div
-                              className="text-sm size-4 border-4 p-4 rounded-md flex items-center justify-center"
-                              key={index}
-                              style={{ background: question.bg_clr_code, borderColor: question.bg_border_code }}
-                            >
-                              <span className="font-bold">{char}</span>
-                            </div>
-                          ))}
+      <section id="all-questions" className="flex flex-col justify-between items-center">
+        <div className="questions w-full flex flex-col h-screen py-6 gap-2">
+          <h1 className="text-sm italic">{t('introToAllQs')}</h1>
+          {Questions.map((question) => (
+            <Link to={`/question/${question.id }?lang=${i18n.language}`} key={question.id}>
+              <div
+                className="py-2 border-b-4 rounded flex items-center text-lg justify-between"
+                id={question.id}
+                style={{ borderColor: question.bg_border_code }}
+              >
+                <div className="flex items-center flex-wrap gap-2 px-2">
+                  {t(question.answer).split(' ').map((word, index) => (
+                    <div className={`word-${index} flex flex-wrap`} key={index}>
+                      {word.split('').map((char, index) => (
+                        <div
+                          className="text-sm size-4 border-4 p-4 rounded-md flex items-center justify-center"
+                          key={index}
+                          style={{ background: question.bg_clr_code, borderColor: question.bg_border_code }}
+                        >
+                          <span className="font-bold">{char}</span>
                         </div>
                       ))}
-                  </div>
-                  <MdOutlineKeyboardDoubleArrowRight className="absolute right-2 size-5" style={{color: question.bg_border_cod}}/>
+                    </div>
+                  ))}
                 </div>
-              </Link>
-            ))}
-          </div>
-          <Link
+                <MdOutlineKeyboardDoubleArrowRight className="text-amber-800 shrink-0" />
+              </div>
+            </Link>
+          ))}
+          <button
+          id="solve-pwd"
             onClick={() => passwordRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' })}
-            className="my-auto"
+            className="text-md bg-amber-400 py-2 px-10 my-auto rounded"
           >
-            <PrimaryButton text={'Solve Password!'} />
-          </Link>
+            {t('solvePwd')}
+          </button>
         </div>
         <div className="h-screen py-6" ref={passwordRef}>
           <Password />
