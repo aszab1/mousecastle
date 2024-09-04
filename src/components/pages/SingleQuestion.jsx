@@ -1,46 +1,69 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { Questions } from "../../assets/questions"
 import { useParams } from "react-router"
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+
 
 
 export default function SingleQuestion() {
+  const inputRefs = useRef([])
+  const { t, i18n } = useTranslation()
   const { id } = useParams()
   const question = Questions.find(q => q.id === parseInt(id))
   const storageKey = `question-${id}-input`
   const [userInput, setUserInput] = useState(() => {
     const savedInput = localStorage.getItem(storageKey)
-    return savedInput ? JSON.parse(savedInput) : Array(question.answer.length).fill('')
+    return savedInput ? JSON.parse(savedInput) : Array(t(question.answer).length).fill('')
   })
-  const { t, i18n } = useTranslation()
-  const correctAnswer = question.answer === userInput.join('')
+  const correctAnswer = t(question.answer) === userInput.join('').toUpperCase()
   const [selectedBox, setSelectedBox] = useState(null)
+  const hint = t(question.answer).toUpperCase().split('')
+  // new array with spaces followed by the second word 
+  const hint2 = Array(5).fill(' ').concat(hint.slice(5));
+
+
+  const gradientBorderStyle = {
+    textAlign: 'center',
+    fontSize: 18,
+    marginBottom: '5px',
+    border: 'solid',
+    borderWidth: '5px',
+    borderImage: 'linear-gradient(to right, #fbcf3d, #51367a, #2f712f, #cc4241, #a31a73, #34a51e, #077bae) 1',
+    background: 'linear-gradient(to right, #feffd6, #ebdbff, #e7ffa7, #ffc5b3, #ff75b0, #b9ff8e, #81d8ff)',
+    borderRadius: '10px',
+    padding: '10px',
+
+
+  };
+
+  const handleInputChange = (e, index) => {
+    const { value } = e.target
+    if (value.length > 1) return
+
+    const newInput = [...userInput]
+    newInput[index] = value
+    setUserInput(newInput)
+    localStorage.setItem(storageKey, JSON.stringify(newInput))
+
+    // Move focus to the next input field
+    if (value.length === 1 && index < t(question.answer).length - 1) {
+      inputRefs.current[index + 1].focus()
+      setSelectedBox(index + 1)
+    }
+  }
 
   useEffect(() => {
-    const handler = (e) => {
-      const key = e.key
 
-      if (selectedBox !== null && key.length === 1 && /[a-zA-Z0-9.]/.test(key)) {
-        const newInput = [...userInput]
-        newInput[selectedBox] = key
-        setUserInput(newInput)
-        localStorage.setItem(storageKey, JSON.stringify(newInput))
-      }
-    }
+    const savedInput = localStorage.getItem(storageKey)
+    setUserInput(savedInput ? JSON.parse(savedInput) : Array(t(question.answer).length).fill(''))
 
 
-    window.addEventListener('keydown', handler)
-    return () => {
-      window.removeEventListener("keydown", handler);
-    }
+    setSelectedBox(null)
+  }, [id, question.answer, storageKey, t])
 
 
-  }, [selectedBox, storageKey, userInput])
-  useEffect(() => {
-    const savedInput = localStorage.getItem(storageKey);
-    setUserInput(savedInput ? JSON.parse(savedInput) : Array(question.answer.length).fill(''));
-  }, [id, question.answer.length, storageKey])
+
   return (
 
     <>
@@ -51,35 +74,71 @@ export default function SingleQuestion() {
         </section>
 
         <section className="question">
-          <h2>Question {question.id}</h2>
+          <h2 style={{ textAlign: 'center' }}>Question {question.id + 1}</h2>
           <p> {t(question.question)}</p>
 
         </section>
 
         <section className="answer" >
           <h2 style={{ textAlign: 'center' }}>Answer</h2>
-          <div style={{ display: 'flex' }}>
-            {question.answer.split('').map((c, i) => (
-              <div
-                key={i}
-                className="text-sm size-4 border-4 p-4 rounded-md flex items-center justify-center "
-                style={{
-                  background: question.bg_clr_code,
-                  borderColor: question.bg_border_code,
-                  margin: '2px',
-                  cursor: 'pointer',
-                  transition: 'opacity 0.3s ease',
-                  boxShadow: selectedBox === i ? '0 0 5px 2px rgba(0, 0, 0, 1)' : 'none',
+          <div style={{ display: 'flex', flexWrap: "wrap" }}>
+            {t(question.answer).split('').map((c, i) => (
+              c === ' ' ? (
+                // show space instead of a input box
+                <div key={i} style={{ width: '24px', margin: '2px' }}></div>
+              ) : (
+                <div style={{ display: 'flex', justifyContent: 'center', position: 'relative' }} key={i}>
 
+                  <input
+                    type="text"
+                    id={`input-${i}`}
+                    maxLength={1}
+                    autoCapitalize="on"
+                    className="border-4 rounded-md size-8 aspect-square text-center text-lg font-bold"
+                    style={{
+                      background: question.bg_clr_code,
+                      borderColor: question.bg_border_code,
+                      margin: '2px',
+                      cursor: 'pointer',
+                      transition: 'opacity 0.3s ease',
+                      boxShadow: selectedBox === i ? '0 0 5px 2px rgba(0, 0, 0, 1)' : 'none',
+                    }}
+                    onClick={() => setSelectedBox(i)}
+                    ref={(el) => (inputRefs.current[i] = el)} // Assign ref to each input
+                    onChange={(e) => handleInputChange(e, i)} // Handle input change
+                    value={userInput[i]?.toUpperCase() || ''}
+                  />
+                  {id < '3' || id > '3' && i === 1 && (
+                    <div style={{
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      fontSize: '18px',
+                      color: '#888',
+                      pointerEvents: 'none',
+                      userSelect: 'none',
+                    }}>
+                      {hint[1]}
+                    </div>
+                  )}
 
-                }}
-                onClick={() => setSelectedBox(i)}
-              >
-                {console.log(selectedBox)}
-                <p>{userInput[i]}</p>
-
-              </div>
-            ))}
+                  {id === '3' && (
+                    <div style={{
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      fontSize: '18px',
+                      color: '#888',
+                      pointerEvents: 'none',
+                      userSelect: 'none',
+                    }}>
+                      {hint2[i]}
+                    </div>
+                  )}
+                </div>
+              )))}
 
 
           </div>
@@ -87,18 +146,32 @@ export default function SingleQuestion() {
         </section>
 
         <section className="buttons"
-          style={{ display: 'flex', justifyContent: 'space-between', width: '100%', fontSize: '24px' }}>
-          
-            {id > 0 ? (
-              <Link to={`/question/${question.id - 1}?lang=${i18n.language}`}>◀️</Link>
-            ) : (
-              <Link to={`/questions`}>◀️</Link>
-            )}
-          
-          {id < 6 && <Link to={`/question/${question.id + 1}?lang=${i18n.language}`}> ▶️</Link>} 
+          style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: '100%' }}>
+          <div style={{ textAlign: 'center', margin: '20px', }} >
+            <Link style={gradientBorderStyle} to={`/questions`}>Back To Questions</Link>
+          </div>
 
-        </section>
-      </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+            {Questions.map((question) => {
+              return (
+                <Link className="border-4 rounded-md size-9 aspect-square text-center text-lg font-bold mb-5"
+                  style={{
+                    background: question.bg_clr_code,
+                    borderColor: question.bg_border_code
+                  }} key={question.id} to={`/question/${question.id}?lang=${i18n.language}`}>
+                  {question.id + 1}
+                </Link>
+              )
+            })}</div>
+
+
+
+
+
+
+
+        </section >
+      </div >
     </>
   )
 }
