@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { Questions } from "../../assets/questions"
 import { useParams } from "react-router"
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 
 export default function SingleQuestion() {
@@ -11,7 +13,7 @@ export default function SingleQuestion() {
     const savedInput = localStorage.getItem(storageKey)
     return savedInput ? JSON.parse(savedInput) : Array(question.answer.length).fill('')
   })
-
+  const { t, i18n } = useTranslation()
   const correctAnswer = question.answer === userInput.join('')
   const [selectedBox, setSelectedBox] = useState(null)
 
@@ -29,9 +31,16 @@ export default function SingleQuestion() {
 
 
     window.addEventListener('keydown', handler)
+    return () => {
+      window.removeEventListener("keydown", handler);
+    }
 
 
   }, [selectedBox, storageKey, userInput])
+  useEffect(() => {
+    const savedInput = localStorage.getItem(storageKey);
+    setUserInput(savedInput ? JSON.parse(savedInput) : Array(question.answer.length).fill(''));
+  }, [id, question.answer.length, storageKey])
   return (
 
     <>
@@ -74,13 +83,19 @@ export default function SingleQuestion() {
 
 
           </div>
-          <div style={{ textAlign: 'center' }}>{correctAnswer && <p> You Guessed Correct Well Done!</p>}</div>
+          <div style={{ textAlign: 'center', marginTop: '10px' }}>{correctAnswer && <p> You Guessed Correct Well Done!</p>}</div>
         </section>
 
         <section className="buttons"
-          style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-          <button style={{ fontSize: '24px' }}> ◀️ </button>
-          <button style={{ fontSize: '24px' }}> ▶️ </button>
+          style={{ display: 'flex', justifyContent: 'space-between', width: '100%', fontSize: '24px' }}>
+          <button >
+            {id > 1 ? (
+              <Link to={`/question/${question.id - 1}?lang=${i18n.language}`}>◀️</Link>
+            ) : (
+              <Link to={`/questions`}>◀️</Link>
+            )}
+          </button>
+          <button ><Link to={`/question/${question.id + 1}?lang=${i18n.language}`}> ▶️</Link>  </button>
         </section>
       </div>
     </>
