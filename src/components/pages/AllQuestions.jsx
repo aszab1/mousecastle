@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Questions } from '../../assets/questions.js';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
 import Password from './Password.jsx';
 import { useTranslation } from 'react-i18next';
