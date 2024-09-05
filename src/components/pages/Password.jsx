@@ -2,7 +2,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import PasswordMouse from '../../assets/images/writing-mouse1.jpg';
 import { Passwords } from '../../assets/questions';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PrimaryButton } from './PrimaryButton';
 
@@ -11,16 +11,49 @@ export default function Password() {
   const { t, i18n } = useTranslation()
   const currentLang = i18n.language
   const navigate = useNavigate()
+  const storageKey = `password-input-${currentLang}`
+
   const passwordData = Passwords.find((password) => password.lang === currentLang)
 
-  const handleInputChange = (e, index) => {
-    const { value } = e.target;
+  const [passwordInput, setPasswordInput] = useState(() => {
+    const savedPassword = sessionStorage.getItem(storageKey)
+    return savedPassword ? savedPassword.split('') : Array(passwordData?.codes.length).fill('')
+  })
 
-    if (value.length === 1 && index < Passwords[0].codes.length - 1) {
+  const formatPassword = (input) => {
+    const joinedInput = input.join('')
+    if (currentLang === 'en') {
+      return `${joinedInput.slice(0, 6)} ${joinedInput.slice(6)}`
+    }
+    else if (currentLang === 'hu') {
+      return `${joinedInput.slice(0, 5)} ${joinedInput.slice(5)}`
+    } else {
+      return joinedInput
+    }
+  }
+
+  const handleInputChange = (e, index) => {
+    const { value } = e.target
+
+    const newPasswordInput = [...passwordInput]
+    newPasswordInput[index] = value
+    setPasswordInput(newPasswordInput)
+    // Save formatted pw
+    sessionStorage.setItem(storageKey, formatPassword(newPasswordInput))
+    if (value.length === 1 && index < passwordData.codes.length - 1) {
       // Move focus to the next input field
       inputRefs.current[index + 1].focus();
     }
-  };
+  }
+
+  useEffect(() => {
+    const savedPassword = sessionStorage.getItem(storageKey)
+    if (savedPassword) {
+      setPasswordInput(savedPassword.split(''))
+    }
+  }, [storageKey])
+
+
 
   return (
     <>
@@ -50,6 +83,7 @@ export default function Password() {
                 }}
                 ref={(el) => (inputRefs.current[index] = el)} // Assign ref to each input
                 onChange={(e) => handleInputChange(e, index)} // Handle input change
+                value={passwordInput[index] || ''}
               />
             </div>
           ))}
