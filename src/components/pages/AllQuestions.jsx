@@ -4,41 +4,27 @@ import { Link, useLocation } from 'react-router-dom';
 import { MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
 import Password from './Password.jsx';
 import { useTranslation } from 'react-i18next';
-
-
+import { PrimaryButton } from './PrimaryButton.jsx';
+import { AnswerBox } from './AnswerBox.jsx';
 
 export const AllQuestions = () => {
-  // 't' function from useTranslation dynamically renders text based on selected language 
-  const { t } = useTranslation()
-  const passwordRef = useRef(null)
-  const [ scrollToPassword, setScrollToPassword ] = useState(false)
-  const { hash } = useLocation() // destructure hash from location
+  // 't' function from useTranslation dynamically renders text based on selected language
+  const { t } = useTranslation();
+  const passwordRef = useRef(null);
+  const [scrollToPassword, setScrollToPassword] = useState(false);
+  const { hash } = useLocation(); // destructure hash from location
 
-  
-
-
-  // answers give to questions
-  // const [answers, setAnswers] = useState([{
-  //   0: sessionStorage.getItem(`question-${0}-input`)|| '',
-  //   1: sessionStorage.getItem(`question-${1}-input`)|| '',
-  //   2: sessionStorage.getItem(`question-${2}-input`)|| '',
-  //   3: sessionStorage.getItem(`question-${3}-input`)|| '',
-  //   4: sessionStorage.getItem(`question-${4}-input`)|| '',
-  //   5: sessionStorage.getItem(`question-${5}-input`)|| '',
-  //   6: sessionStorage.getItem(`question-${6}-input`)|| '',
-  // }]);
-
-  const [ answers, setAnswers ] = useState(() =>
+  const [answers, setAnswers] = useState(() =>
     Questions.map((_, index) => sessionStorage.getItem(`question-${index}-input`) || '')
-  )
-  
+  );
+
   useEffect(() => {
     if (hash === '#solve-password' && !scrollToPassword) {
       // Scroll to the Password section
-      passwordRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      setScrollToPassword(true)
+      passwordRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setScrollToPassword(true);
     }
-  }, [hash, scrollToPassword])
+  }, [hash, scrollToPassword]);
 
   return (
     <>
@@ -52,18 +38,13 @@ export const AllQuestions = () => {
                 id={question.id}
                 style={{ borderColor: question.bg_border_code }}
               >
-                <div className="flex items-center flex-wrap gap-2 px-2">
-                
+                <div className="flex items-center flex-wrap px-2">
                   {/* Display answer if available, otherwise display Question X */}
                   {answers[question.id] ? (
                     answers[question.id].split('').map((char, index) => (
-                      <div
-                        key={index}
-                        className="text-sm size-4 border-4 p-4 rounded-md flex items-center justify-center"
-                        style={{ background: question.bg_clr_code, borderColor: question.bg_border_code }}
-                      >
+                      <AnswerBox key={index} backgroundColor={question.bg_clr_code} borderColor={question.bg_border_code}>
                         <span className="font-bold">{char.toUpperCase()}</span>
-                      </div>
+                      </AnswerBox>
                     ))
                   ) : (
                     <span className="font-bold">{`${t('question')} ${question.id + 1}`}</span>
@@ -73,13 +54,11 @@ export const AllQuestions = () => {
               </div>
             </Link>
           ))}
-          <button
-          id="solve-pwd"
+          <PrimaryButton
+            text={t('solvePwd')}
             onClick={() => passwordRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' })}
-            className="text-md bg-amber-400 py-2 px-10 my-auto rounded"
-          >
-            {t('solvePwd')}
-          </button>
+            style={'mt-4'}
+          />
         </div>
         <div className="h-screen py-6" ref={passwordRef}>
           <Password />
