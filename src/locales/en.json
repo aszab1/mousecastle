@@ -52,8 +52,10 @@
   "bye": "Bye Bye!",
   "magnus": "Prince Magnus Mousecastle",
   "question": "Question",
-  "answer": "Answer"
-
+  "answer": "Answer",
+  "next": "Next",
+  "back": "Back",
+  "home": "Home"
 }
 
 
