@@ -34,18 +34,29 @@ export default function Password() {
   }
 
   const handleInputChange = (e, index) => {
-    const { value } = e.target
+    const { value } = e.target;
+    const newPasswordInput = [...passwordInput];
 
-    const newPasswordInput = [...passwordInput]
-    newPasswordInput[index] = value
-    setPasswordInput(newPasswordInput)
-    // Save formatted pw
-    sessionStorage.setItem(storageKey, formatPassword(newPasswordInput))
-    if (value.length === 1 && index < passwordData.codes.length - 1) {
-      // Move focus to the next input field
-      inputRefs.current[index + 1].focus();
+    if (value) {
+      // Add character and move to the next box
+      newPasswordInput[index] = value.toUpperCase();
+      setPasswordInput(newPasswordInput);
+      sessionStorage.setItem(storageKey, formatPassword(newPasswordInput));
+
+      if (value.length === 1 && index < passwordData.codes.length - 1) {
+        inputRefs.current[index + 1].focus();
+      }
+    } else {
+      // Handle backspace and move to the previous box
+      newPasswordInput[index] = '';
+      setPasswordInput(newPasswordInput);
+      sessionStorage.setItem(storageKey, formatPassword(newPasswordInput));
+
+      if (index > 0) {
+        inputRefs.current[index - 1].focus();
+      }
     }
-  }
+  };
 
   useEffect(() => {
     const savedPassword = sessionStorage.getItem(storageKey)
@@ -71,9 +82,9 @@ export default function Password() {
               size={12}
               key={index}
               color={code}
-              ref={(el) => (inputRefs.current[index] = el)} // Assign ref to each input
+              inputRef={(el) => (inputRefs.current[index] = el)} // Assign ref to each input
               onChange={(e) => handleInputChange(e, index)} // Handle input change
-              value={passwordInput[index]?.toUpperCase() || ''}
+              value={passwordInput[index] || ''}
               />
           ))}
         </div>
@@ -83,3 +94,4 @@ export default function Password() {
     </>
   );
 }
+

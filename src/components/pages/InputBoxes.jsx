@@ -12,14 +12,18 @@ export const DisplayOnlyBox = ({ backgroundColor, borderColor, children }) => {
   );
 };
 
-export const InputBox = ({ color, inputRef, onChange, value, size }) => {
+export const InputBox = ({ color, inputRef, onChange, onKeyDown, value, size }) => {
   return (
     <div className="flex flex-col items-center">
       <label>{color.codeLocation}</label>
       <input
         type="text"
         maxLength={1}
+        inputMode="text"
         autoCapitalize="on"
+        autoComplete="off"
+        autoCorrect="off"
+        spellCheck="false"
         className={`border-4 rounded-md aspect-square text-center text-lg font-bold size-${size}`}
         style={{
           backgroundColor: color.bg_clr_code,
@@ -27,6 +31,7 @@ export const InputBox = ({ color, inputRef, onChange, value, size }) => {
         }} 
         ref={inputRef}
         onChange={onChange}
+        onKeyDown={onKeyDown}
         value={value}
       />
     </div>

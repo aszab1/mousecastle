@@ -98,7 +98,7 @@ export default function SingleQuestion() {
                 ) : (
                   <div style={{ display: 'flex', justifyContent: 'center', position: 'relative' }} key={index}>
                     <InputBox
-                    size={16}
+                    size={12}
                     color={question}
                     ref={(el) => (inputRefs.current[index] = el)}
                     onChange={(e) => handleInputChange(e, index)}
