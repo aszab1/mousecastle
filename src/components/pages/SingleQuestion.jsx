@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { Questions } from '../../assets/questions';
 import { useNavigate, useParams } from 'react-router';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { PiListBulletsFill } from 'react-icons/pi';
 import { FaAnglesRight } from 'react-icons/fa6';
@@ -11,9 +10,10 @@ export default function SingleQuestion() {
   const inputRefs = useRef([]);
   const { t } = useTranslation();
   const { id } = useParams();
-  const question = Questions.find((q) => q.id === parseInt(id, 15));
+  const question = Questions[id]
   const storageKey = `question-${id}-input`;
   const navigate = useNavigate();
+
   // useState init. to handle array vs string
   const [userInput, setUserInput] = useState(() => {
     const savedInput = sessionStorage.getItem(storageKey);
@@ -45,19 +45,6 @@ export default function SingleQuestion() {
     const replaced = spaces + str.slice(index);
     return replaced.split('');
   }
-
-  const gradientBorderStyle = {
-    textAlign: 'center',
-    fontSize: 18,
-    marginBottom: '5px',
-    border: 'solid',
-    borderWidth: '5px',
-    background: question.bg_clr_code,
-    borderColor: question.bg_border_code,
-    borderRadius: '10px',
-    padding: '10px',
-    fontWeight: 'bold',
-  };
 
   const handleInputChange = (e, index) => {
     const { value } = e.target;
@@ -173,21 +160,23 @@ export default function SingleQuestion() {
           </div>
         </div>
 
-        <div className="buttons flex w-full justify-around text-amber-500">
-          <div className="previous-question flex flex-col items-center">
-            {id >= 1 && <FaAnglesLeft className="size-12" onClick={() => navigate(`/question/${question.id - 1}`)} />}
-            <p className='text-sm font-bold'>{t('back')}</p>
-          </div>
-          <div className="go-to-all-questions flex flex-col items-center">
+        <div className="buttons flex w-full justify-around text-sm font-bold" style={{ color: Questions[id].bg_border_code }}>
+          {id >= 1 && (
+            <div className="previous-question flex flex-col items-center gap-1">
+              <FaAnglesLeft className="size-12" onClick={() => navigate(`/question/${question.id - 1}`)} />
+              <p>{t('back')}</p>
+            </div>
+          )}
+          <div className="go-to-all-questions flex flex-col items-center gap-1">
             <PiListBulletsFill className="size-12" onClick={() => navigate('/questions')} />
-            <p className='text-sm font-bold'>{t('home')}</p>
+            <p>{t('home')}</p>
           </div>
-          <div className="next-question flex flex-col items-center">
-            {id < Questions.length - 1 && (
+          {id < Questions.length - 1 && (
+            <div className="next-question flex flex-col items-center gap-1">
               <FaAnglesRight className="size-12" onClick={() => navigate(`/question/${question.id + 1}`)} />
-            )}
-            <p className='text-sm font-bold'>{t('next')}</p>
-          </div>
+              <p>{t('next')}</p>
+            </div>
+          )}
         </div>
       </section>
     </>

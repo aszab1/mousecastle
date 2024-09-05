@@ -5,7 +5,7 @@ import { MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
 import Password from './Password.jsx';
 import { useTranslation } from 'react-i18next';
 import { PrimaryButton } from './PrimaryButton.jsx';
-import { AnswerBox } from './AnswerBox.jsx';
+import { DisplayOnlyBox } from './InputBoxes.jsx';
 
 export const AllQuestions = () => {
   // 't' function from useTranslation dynamically renders text based on selected language
@@ -14,7 +14,7 @@ export const AllQuestions = () => {
   const [scrollToPassword, setScrollToPassword] = useState(false);
   const { hash } = useLocation(); // destructure hash from location
 
-  const [answers, setAnswers] = useState(() =>
+  const [answers] = useState(() =>
     Questions.map((_, index) => sessionStorage.getItem(`question-${index}-input`) || '')
   );
 
@@ -28,9 +28,10 @@ export const AllQuestions = () => {
 
   return (
     <>
-      <section id="all-questions" className="flex flex-col justify-between items-center">
-        <div className="questions w-full flex flex-col h-screen py-6 gap-2">
-          <h1 className="text-sm italic">{t('introToAllQs')}</h1>
+      <section id="all-questions">
+        <div className="questions flex flex-col h-screen py-6 gap-2 justify-center">
+          <h1 className="italic">{t('introToAllQs')}</h1>
+          <div className="questions-list"></div>
           {Questions.map((question) => (
             <Link to={`/question/${question.id}`} key={question.id}>
               <div
@@ -42,9 +43,9 @@ export const AllQuestions = () => {
                   {/* Display answer if available, otherwise display Question X */}
                   {answers[question.id] ? (
                     answers[question.id].split('').map((char, index) => (
-                      <AnswerBox key={index} backgroundColor={question.bg_clr_code} borderColor={question.bg_border_code}>
+                      <DisplayOnlyBox key={index} backgroundColor={question.bg_clr_code} borderColor={question.bg_border_code}>
                         <span className="font-bold">{char.toUpperCase()}</span>
-                      </AnswerBox>
+                      </DisplayOnlyBox>
                     ))
                   ) : (
                     <span className="font-bold">{`${t('question')} ${question.id + 1}`}</span>
@@ -57,7 +58,7 @@ export const AllQuestions = () => {
           <PrimaryButton
             text={t('solvePwd')}
             onClick={() => passwordRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' })}
-            style={'mt-4'}
+            style={'my-0'}
           />
         </div>
         <div className="h-screen py-6" ref={passwordRef}>

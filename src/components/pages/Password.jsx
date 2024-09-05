@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PasswordMouse from '../../assets/images/writing-mouse1.jpg';
 import { Passwords } from '../../assets/questions';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PrimaryButton } from './PrimaryButton';
+import { PasswordBox } from './InputBoxes';
 
 export default function Password() {
   const inputRefs = useRef([]);
@@ -65,27 +66,14 @@ export default function Password() {
           <p>{t('pwdExplanation2')}</p>
         </div>
         <div className="password-boxes h-full flex flex-wrap gap-2 justify-center">
-          {/* {Passwords[0].codes.map((code, index) => ( */}
           {passwordData && passwordData.codes.map((code, index) => (
-            <div className="single-box flex flex-col gap-0 items-center" key={index}>
-              <label htmlFor="" className="italic text-sm">
-                {code.codeLocation}
-              </label>
-              <input
-                type="text"
-                id={`input-${index}`}
-                maxLength={1}
-                autoCapitalize="on"
-                className="border-4 rounded-md size-12 aspect-square text-center text-lg font-bold"
-                style={{
-                  backgroundColor: code.colorCode,
-                  borderColor: code.borderColorCode,
-                }}
-                ref={(el) => (inputRefs.current[index] = el)} // Assign ref to each input
-                onChange={(e) => handleInputChange(e, index)} // Handle input change
-                value={passwordInput[index] || ''}
+              <PasswordBox 
+              key={index}
+              code={code}
+              ref={(el) => (inputRefs.current[index] = el)} // Assign ref to each input
+              onChange={(e) => handleInputChange(e, index)} // Handle input change
+              value={passwordInput[index] || ''}
               />
-            </div>
           ))}
         </div>
         <p className="text-center">{t('pwdExplanation3')}</p>
