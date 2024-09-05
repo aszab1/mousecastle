@@ -5,7 +5,7 @@ import { Passwords } from '../../assets/questions';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PrimaryButton } from './PrimaryButton';
-import { PasswordBox } from './InputBoxes';
+import { InputBox } from './InputBoxes';
 
 export default function Password() {
   const inputRefs = useRef([]);
@@ -67,12 +67,13 @@ export default function Password() {
         </div>
         <div className="password-boxes h-full flex flex-wrap gap-2 justify-center">
           {passwordData && passwordData.codes.map((code, index) => (
-              <PasswordBox 
+              <InputBox 
+              size={12}
               key={index}
-              code={code}
+              color={code}
               ref={(el) => (inputRefs.current[index] = el)} // Assign ref to each input
               onChange={(e) => handleInputChange(e, index)} // Handle input change
-              value={passwordInput[index] || ''}
+              value={passwordInput[index]?.toUpperCase() || ''}
               />
           ))}
         </div>

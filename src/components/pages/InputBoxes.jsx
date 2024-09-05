@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-// eslint-disable-next-line react/prop-types
 export const DisplayOnlyBox = ({ backgroundColor, borderColor, children }) => {
   return (
     <>
@@ -13,21 +12,19 @@ export const DisplayOnlyBox = ({ backgroundColor, borderColor, children }) => {
   );
 };
 
-export const PasswordBox = ({ code, inputRef, onChange, value }) => {
+export const InputBox = ({ color, inputRef, onChange, value, size }) => {
   return (
-    <div className='flex flex-col items-center'>
-      <label>
-        {code.codeLocation}
-      </label>
+    <div className="flex flex-col items-center">
+      <label>{color.codeLocation}</label>
       <input
         type="text"
         maxLength={1}
         autoCapitalize="on"
-        className="border-4 rounded-md size-12 aspect-square text-center text-lg font-bold"
+        className={`border-4 rounded-md aspect-square text-center text-lg font-bold size-${size}`}
         style={{
-          backgroundColor: code.colorCode,
-          borderColor: code.borderColorCode,
-        }}
+          backgroundColor: color.bg_clr_code,
+          borderColor: color.bg_border_code,
+        }} 
         ref={inputRef}
         onChange={onChange}
         value={value}
