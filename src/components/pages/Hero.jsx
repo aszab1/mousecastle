@@ -22,7 +22,7 @@ export const Hero = () => {
       <section id="hero" className="flex flex-col gap-8 h-full items-center justify-center">
         <Nav />
         <img src={HeroImage} alt="hero-image" />
-        <h1>Choose language to start:</h1>
+        <h1>Válassz nyelvet a kezdéshez:</h1>
         <div className="languages flex gap-8">
           <img
             className="w-16 h-full rounded-md hover:scale-105 transition-all duration-300"
