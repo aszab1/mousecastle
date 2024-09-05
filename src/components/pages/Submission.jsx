@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom'
-import farewellMouse from '../../assets/images/bandw-mouse.jpg'
+import { Link, useNavigate } from 'react-router-dom';
+import farewellMouse from '../../assets/images/bandw-mouse.jpg';
 import { useTranslation } from 'react-i18next'
 import { useEffect, useState } from 'react'
+import { PrimaryButton } from './PrimaryButton';
 
 export default function Submission() {
-
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
 
   const currentLang = i18n.language
   const storageKey = `password-input-${currentLang}`
@@ -23,9 +24,7 @@ export default function Submission() {
         <h1>{t('pwdConfimation')}</h1>
         <p className="text-sm italic">{t('submissionQ')}</p>
         {password && <p>{password}</p>}
-        <Link to= '/questions#solve-password' >
-          <button className='bg-blue-100 py-4 px-16 rounded-md'>{t('changePwdBtn')}</button>
-        </Link>
+        <PrimaryButton text={t('changePwdBtn')} onClick={() => navigate('/questions#solve-password')} />
         <h1>{t('congrats')}</h1>
         <p>{t('goToTourinform')}</p>
         <p>{t('goToNostalgia')}</p>
@@ -35,8 +34,7 @@ export default function Submission() {
           <p>{t('bye')}</p>
         </div>
         <p>{t('magnus')}</p>
-
       </section>
     </>
-  )
+  );
 }

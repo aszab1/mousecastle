@@ -32,16 +32,17 @@ const router = createBrowserRouter([
         element: <AllQuestions />
       },
       {
+        path: '/question/:id',
+        element: <SingleQuestion />,
+      },
+      {
         path: '/password',
         element: <Password />,
       },
       {
         path: '/submission',
         element: <Submission />,
-      },{
-        path: '/question/:id',
-        element: <SingleQuestion />,
-      }
+      },
     ],
   },
 ]);

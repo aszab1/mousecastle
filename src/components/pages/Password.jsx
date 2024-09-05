@@ -1,14 +1,16 @@
 /* eslint-disable react/prop-types */
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import PasswordMouse from '../../assets/images/writing-mouse1.jpg';
 import { Passwords } from '../../assets/questions';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { PrimaryButton } from './PrimaryButton';
 
 export default function Password() {
   const inputRefs = useRef([]);
   const { t, i18n } = useTranslation()
   const currentLang = i18n.language
+  const navigate = useNavigate()
   const storageKey = `password-input-${currentLang}`
 
   const passwordData = Passwords.find((password) => password.lang === currentLang)
@@ -87,9 +89,7 @@ export default function Password() {
           ))}
         </div>
         <p className="text-center">{t('pwdExplanation3')}</p>
-        <Link to="/submission" className="flex flex-col items-center text-center gap-4">
-          <button className="bg-blue-100 py-4 px-16 rounded-md">{t('submit')}</button>
-        </Link>
+        <PrimaryButton text={t('submit')} onClick={() => navigate('/submission')}/>
       </section>
     </>
   );

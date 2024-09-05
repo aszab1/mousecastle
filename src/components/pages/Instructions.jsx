@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -9,6 +9,7 @@ export const Instructions = () => {
 
   const location = useLocation()
   const { i18n, t } = useTranslation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search)
@@ -21,7 +22,7 @@ export const Instructions = () => {
 
   return (
     <>
-      <section id="instructions" className="flex flex-col gap-4 items-center justify-center max-h-full">
+      <section id="instructions" className="flex flex-col gap-4 items-center justify-center h-full">
         <img src={InstructionsImg} alt="instructions-page-image" />
         <h1 className="text-4xl italic bold">{t('welcome')}</h1>
         <div className="welcome-text flex flex-col gap-2 text-center bold">
@@ -32,9 +33,7 @@ export const Instructions = () => {
         <p className='italic text-md text-amber-500'>{t('dessertHint')}</p>
         <p>{t('goodLuck')}</p>
         </div>
-        <Link to="/questions" className='w-full'>
-        <PrimaryButton text={t('start')}/>
-        </Link>
+        <PrimaryButton text={t('start')} onClick={() => navigate('/questions')}/>
       </section>
     </>
   );
