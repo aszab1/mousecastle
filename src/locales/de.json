@@ -37,7 +37,7 @@
   },
   "introToAllQs": "Klicke und beantworte alle Fragen, dann klicke, um das Passwort zu lösen!",
   "solvePwd": "Passwort Lösen",
-  "howTo" : "So löst du das Passwort",
+  "howTo": "So löst du das Passwort",
   "pwdExplanation1": "Schau dir jeden Hinweis an, wie 7/1. Das bedeutet, dass du den ersten Buchstaben aus deiner siebten Antwort nimmst.",
   "pwdExplanation2": "Sammle alle Buchstaben, die du brauchst, um das Passwort zu bilden.",
   "pwdExplanation3": "Wenn du fertig bist, drücke Absenden, um zu sehen, was als Nächstes zu tun ist!",
@@ -52,5 +52,8 @@
   "bye": "Tschüss! Auf Wiedersehen!",
   "magnus": "Herzog Elmar von Mausburg",
   "question": "Frage",
-  "answer": "Antwort"
+  "answer": "Antwort",
+  "next": "Weiter",
+  "back": "Zurück",
+  "home": "Startseite"
 }

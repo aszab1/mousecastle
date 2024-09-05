@@ -1,8 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
 import { Questions } from '../../assets/questions';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { PiListBulletsFill } from 'react-icons/pi';
+import { FaAnglesRight } from 'react-icons/fa6';
+import { FaAnglesLeft } from 'react-icons/fa6';
 
 export default function SingleQuestion() {
   const inputRefs = useRef([]);
@@ -10,7 +13,7 @@ export default function SingleQuestion() {
   const { id } = useParams();
   const question = Questions.find((q) => q.id === parseInt(id, 15));
   const storageKey = `question-${id}-input`;
-  console.log(t);
+  const navigate = useNavigate();
   // useState init. to handle array vs string
   const [userInput, setUserInput] = useState(() => {
     const savedInput = sessionStorage.getItem(storageKey);
@@ -93,21 +96,23 @@ export default function SingleQuestion() {
   return (
     <>
       <section className="flex flex-col justify-between items-center h-full">
-        <img src={question.img_url} alt={`Question ${question.id}`}/>
+        <img src={question.img_url} alt={`Question ${question.id}`} />
         <div className="question text-center flex flex-col gap-4">
-          <h1 className='font-bold text-2xl'>{t('question')} {question.id + 1}</h1>
+          <h1 className="font-bold text-2xl">
+            {t('question')} {question.id + 1}
+          </h1>
           <p> {t(question.question)}</p>
         </div>
 
         <div className="answer flex flex-col gap-4 text-center">
-          <h2 className='text-xl font-bold'>{t('answer')}</h2>
-          <div className='flex flex-wrap'>
+          <h2 className="text-xl font-bold">{t('answer')}</h2>
+          <div className="flex flex-wrap">
             {t(question.answer)
               .split('')
               .map((c, i) =>
                 c === ' ' ? (
                   // show space instead of a input box
-                  <div key={i} style={{ width: '24px'}}></div>
+                  <div key={i} style={{ width: '24px' }}></div>
                 ) : (
                   <div style={{ display: 'flex', justifyContent: 'center', position: 'relative' }} key={i}>
                     <input
@@ -168,38 +173,22 @@ export default function SingleQuestion() {
           </div>
         </div>
 
-        <section
-          className="buttons"
-          style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: '100%' }}
-        >
-          <div style={{ textAlign: 'center', margin: '20px' }}>
-            <Link style={gradientBorderStyle} to={`/questions`}>
-              Back To Questions
-            </Link>
+        <div className="buttons flex w-full justify-around text-amber-500">
+          <div className="previous-question flex flex-col items-center">
+            {id >= 1 && <FaAnglesLeft className="size-12" onClick={() => navigate(`/question/${question.id - 1}`)} />}
+            <p className='text-sm font-bold'>{t('back')}</p>
           </div>
-
-          <div style={{ display: 'flex', fontSize: '25px' }}>
-            {question.id >= 1 && <Link to={`/question/${question.id - 1}`}>◀️</Link>}
-            {question.id < 6 && (
-              <Link style={{ marginLeft: 'auto' }} to={`/question/${question.id + 1}`}>
-                ▶️
-              </Link>
+          <div className="go-to-all-questions flex flex-col items-center">
+            <PiListBulletsFill className="size-12" onClick={() => navigate('/questions')} />
+            <p className='text-sm font-bold'>{t('home')}</p>
+          </div>
+          <div className="next-question flex flex-col items-center">
+            {id < Questions.length - 1 && (
+              <FaAnglesRight className="size-12" onClick={() => navigate(`/question/${question.id + 1}`)} />
             )}
+            <p className='text-sm font-bold'>{t('next')}</p>
           </div>
-
-          {/* <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-            {Questions.map((question) => {
-              return (
-                <Link className="border-4 rounded-md size-9 aspect-square text-center text-lg font-bold mb-5"
-                  style={{
-                    background: question.bg_clr_code,
-                    borderColor: question.bg_border_code
-                  }} key={question.id} to={`/question/${question.id}`}>
-                  {question.id + 1}
-                </Link>
-              )
-            })}</div> */}
-        </section>
+        </div>
       </section>
     </>
   );
