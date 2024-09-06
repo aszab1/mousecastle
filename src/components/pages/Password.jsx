@@ -8,7 +8,7 @@ import { PrimaryButton } from './PrimaryButton';
 import { InputBox } from './InputBoxes';
 
 export default function Password() {
-  const inputRefs = useRef([]);
+  const inputRefs = useRef([])
   const { t, i18n } = useTranslation()
   const currentLang = i18n.language
   const navigate = useNavigate()
@@ -93,6 +93,6 @@ export default function Password() {
         <PrimaryButton text={t('submit')} onClick={() => navigate('/submission')}/>
       </section>
     </>
-  );
+  )
 }
 
