@@ -8,7 +8,7 @@ import { PrimaryButton } from './PrimaryButton';
 import { InputBox } from './InputBoxes';
 
 export default function Password() {
-  const inputRefs = useRef([]);
+  const inputRefs = useRef([])
   const { t, i18n } = useTranslation()
   const currentLang = i18n.language
   const navigate = useNavigate()
@@ -18,7 +18,7 @@ export default function Password() {
 
   const [passwordInput, setPasswordInput] = useState(() => {
     const savedPassword = sessionStorage.getItem(storageKey)
-    return savedPassword ? savedPassword.split('') : Array(passwordData?.codes.length).fill('')
+    return savedPassword ? savedPassword.replace(/\s/g, '').split('') : Array(passwordData?.codes.length).fill('')
   })
 
   const formatPassword = (input) => {
@@ -34,25 +34,37 @@ export default function Password() {
   }
 
   const handleInputChange = (e, index) => {
-    const { value } = e.target
+    const { value } = e.target;
+    const newPasswordInput = [...passwordInput];
 
-    const newPasswordInput = [...passwordInput]
-    newPasswordInput[index] = value
-    setPasswordInput(newPasswordInput)
-    // Save formatted pw
-    sessionStorage.setItem(storageKey, formatPassword(newPasswordInput))
-    if (value.length === 1 && index < passwordData.codes.length - 1) {
-      // Move focus to the next input field
-      inputRefs.current[index + 1].focus();
+    if (value) {
+      // Add character and move to the next box
+      newPasswordInput[index] = value.toUpperCase();
+      setPasswordInput(newPasswordInput);
+      sessionStorage.setItem(storageKey, formatPassword(newPasswordInput));
+
+      if (value.length === 1 && index < passwordData.codes.length - 1) {
+        inputRefs.current[index + 1].focus();
+      }
+    } else {
+      // Handle backspace and move to the previous box
+      newPasswordInput[index] = ''
+      setPasswordInput(newPasswordInput)
+      sessionStorage.setItem(storageKey, formatPassword(newPasswordInput))
+
+      if (index > 0) {
+        inputRefs.current[index - 1].focus()
+      }
     }
   }
 
+  // Reset password input state on component mount to prevent extra input field issues if changePwdBtn clicked on Submission page
   useEffect(() => {
+    // Reset the state each time the password page is visited
     const savedPassword = sessionStorage.getItem(storageKey)
-    if (savedPassword) {
-      setPasswordInput(savedPassword.split(''))
-    }
-  }, [storageKey])
+    const cleanedPassword = savedPassword ? savedPassword.replace(/\s/g, '').split('') : Array(passwordData?.codes.length).fill('')
+    setPasswordInput(cleanedPassword)
+  }, [storageKey, passwordData?.codes.length])
 
 
 
@@ -71,9 +83,9 @@ export default function Password() {
               size={12}
               key={index}
               color={code}
-              ref={(el) => (inputRefs.current[index] = el)} // Assign ref to each input
+              inputRef={(el) => (inputRefs.current[index] = el)} // Assign ref to each input
               onChange={(e) => handleInputChange(e, index)} // Handle input change
-              value={passwordInput[index]?.toUpperCase() || ''}
+              value={passwordInput[index] || ''}
               />
           ))}
         </div>
@@ -81,5 +93,6 @@ export default function Password() {
         <PrimaryButton text={t('submit')} onClick={() => navigate('/submission')}/>
       </section>
     </>
-  );
+  )
 }
+
