@@ -15,12 +15,23 @@ export const AllQuestions = () => {
   const { hash } = useLocation(); // destructure hash from location
 
   const [answers] = useState(() =>
-    Questions.map((_, index) => sessionStorage.getItem(`question-${index}-input`) || '')
+    Questions.map((_, index) => {
+      const savedAnswer = sessionStorage.getItem(`question-${index}-input`);
+      if (savedAnswer) {
+        try {
+          const parsedAnswer = JSON.parse(savedAnswer);
+          return Array.isArray(parsedAnswer) ? parsedAnswer : parsedAnswer.split('');
+        } catch (error) {
+          console.error('Error parsing saved answer:', error);
+          return [];
+        }
+      }
+      return [];
+    })
   );
 
   useEffect(() => {
     if (hash === '#solve-password' && !scrollToPassword) {
-      // Scroll to the Password section
       passwordRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
       setScrollToPassword(true);
     }
@@ -40,9 +51,8 @@ export const AllQuestions = () => {
                 style={{ borderColor: question.bg_border_code }}
               >
                 <div className="flex items-center flex-wrap px-2">
-                  {/* Display answer if available, otherwise display Question X */}
-                  {answers[question.id] ? (
-                    answers[question.id].split('').map((char, index) => (
+                  {answers[question.id] && answers[question.id].length > 0 ? (
+                    answers[question.id].map((char, index) => (
                       <DisplayOnlyBox key={index} backgroundColor={question.bg_clr_code} borderColor={question.bg_border_code}>
                         <span className="font-bold">{char.toUpperCase()}</span>
                       </DisplayOnlyBox>
