@@ -58,7 +58,7 @@ export const AllQuestions = () => {
           <PrimaryButton
             text={t('solvePwd')}
             onClick={() => passwordRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' })}
-            style={'my-0'}
+            style={'my-4'}
           />
         </div>
         <div className="h-screen py-6" ref={passwordRef}>

@@ -20,7 +20,7 @@ export const InputBox = ({ color, inputRef, onChange, value, size }) => {
         type="text"
         maxLength={1}
         autoCapitalize="on"
-        className={`border-4 rounded-md aspect-square text-center text-lg font-bold size-${size}`}
+        className={`border-4 rounded-md text-center text-lg font-bold size-${size} aspect-square`}
         style={{
           backgroundColor: color.bg_clr_code,
           borderColor: color.bg_border_code,
