@@ -100,7 +100,7 @@ export default function SingleQuestion() {
                     <InputBox
                     size={12}
                     color={question}
-                    ref={(el) => (inputRefs.current[index] = el)}
+                    inputRef={(el) => (inputRefs.current[index] = el)}
                     onChange={(e) => handleInputChange(e, index)}
                     value={userInput[index]?.toUpperCase() || ''}
                     />

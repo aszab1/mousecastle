@@ -18,7 +18,7 @@ export default function Password() {
 
   const [passwordInput, setPasswordInput] = useState(() => {
     const savedPassword = sessionStorage.getItem(storageKey)
-    return savedPassword ? savedPassword.split('') : Array(passwordData?.codes.length).fill('')
+    return savedPassword ? savedPassword.replace(/\s/g, '').split('') : Array(passwordData?.codes.length).fill('')
   })
 
   const formatPassword = (input) => {
@@ -48,22 +48,23 @@ export default function Password() {
       }
     } else {
       // Handle backspace and move to the previous box
-      newPasswordInput[index] = '';
-      setPasswordInput(newPasswordInput);
-      sessionStorage.setItem(storageKey, formatPassword(newPasswordInput));
+      newPasswordInput[index] = ''
+      setPasswordInput(newPasswordInput)
+      sessionStorage.setItem(storageKey, formatPassword(newPasswordInput))
 
       if (index > 0) {
-        inputRefs.current[index - 1].focus();
+        inputRefs.current[index - 1].focus()
       }
     }
-  };
+  }
 
+  // Reset password input state on component mount to prevent extra input field issues if changePwdBtn clicked on Submission page
   useEffect(() => {
+    // Reset the state each time the password page is visited
     const savedPassword = sessionStorage.getItem(storageKey)
-    if (savedPassword) {
-      setPasswordInput(savedPassword.split(''))
-    }
-  }, [storageKey])
+    const cleanedPassword = savedPassword ? savedPassword.replace(/\s/g, '').split('') : Array(passwordData?.codes.length).fill('')
+    setPasswordInput(cleanedPassword)
+  }, [storageKey, passwordData?.codes.length])
 
 
 
