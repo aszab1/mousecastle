@@ -14,7 +14,7 @@ export const DisplayOnlyBox = ({ backgroundColor, borderColor, children }) => {
 
 export const InputBox = ({ color, inputRef, onChange, onKeyDown, value, size }) => {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center justify-center h-fit">
       <label>{color.codeLocation}</label>
       <input
         type="text"

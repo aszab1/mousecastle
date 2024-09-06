@@ -20,7 +20,7 @@ export const SelectedLanguage = () => {
       <img
         src={languageImages[currentLang]}
         alt="selected-language-flag"
-        className="absolute top-4  right-4 size-6 rounded aspect-video"
+        className="absolute top-4  right-4 h-4 rounded aspect-video"
         onClick={() => navigate('/')}
       />
     </>

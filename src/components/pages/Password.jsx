@@ -77,7 +77,7 @@ export default function Password() {
           <p>{t('pwdExplanation1')}</p>
           <p>{t('pwdExplanation2')}</p>
         </div>
-        <div className="password-boxes h-full flex flex-wrap gap-2 justify-center">
+        <div className="password-boxes flex flex-wrap gap-4 justify-center h-fit">
           {passwordData && passwordData.codes.map((code, index) => (
               <InputBox 
               size={12}
