@@ -52,11 +52,28 @@ export const AllQuestions = () => {
               >
                 <div className="flex items-center flex-wrap px-2">
                   {answers[question.id] && answers[question.id].length > 0 ? (
-                    answers[question.id].map((char, index) => (
-                      <DisplayOnlyBox key={index} backgroundColor={question.bg_clr_code} borderColor={question.bg_border_code}>
-                        <span className="font-bold">{char.toUpperCase()}</span>
-                      </DisplayOnlyBox>
-                    ))
+                    answers[question.id].map((char, index) => {
+                      if (char === '\n') {
+                        // Render a new line instead of an input box for the line break character
+                        return <div key={index} className="w-full"></div>;
+                      }
+                      return (
+                        <DisplayOnlyBox
+                          key={index}
+                          backgroundColor={question.bg_clr_code}
+                          borderColor={question.bg_border_code}
+                        >
+                          <span
+                            className="font-bold"
+                            style={{
+                              marginRight: question.id === 0 && index === 2 ? '8px' : '0',
+                            }}
+                          >
+                            {char.toUpperCase()}
+                          </span>
+                        </DisplayOnlyBox>
+                      );
+                    })
                   ) : (
                     <span className="font-bold">{`${t('question')} ${question.id + 1}`}</span>
                   )}
