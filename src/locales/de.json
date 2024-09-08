@@ -55,5 +55,6 @@
   "answer": "Antwort",
   "next": "Weiter",
   "back": "Zurück",
-  "home": "Startseite"
+  "home": "Startseite",
+  "missingPwd": "...fehlendes Passwort..."
 }

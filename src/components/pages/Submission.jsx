@@ -83,39 +83,40 @@ export default function Submission() {
         {isPasswordCorrect ? (
           <>
 
-            <h1 className="mt-4 text-lg">{t('pwdConfimation')}</h1>
-            <div className="password-display w-auto max-w-md text-center py-3 px-10 font-bold text-xl border-4 min-h-16 border-amber-400 bg-gradient-to-r from-amber-50 to-amber-100 shadow-md mx-auto">
+            <h1 className="mt-4 text-lg md:text-xl">{t('pwdConfimation')}</h1>
+            <div className="password-display w-auto max-w-md text-center py-2 px-6 font-bold text-lg border-4 min-h-14 border-amber-400 bg-gradient-to-r from-amber-50 to-amber-100 shadow-md mx-auto">
+
               {password ? (
               <p className="text-amber-900">{password}</p>
             ) : (
-              <p className="italic text-sm text-slate-400 font-light">...missing password...</p>
+              <p className="italic text-sm text-slate-400 font-light">{t('missingPw')}</p>
             )}
             </div>
-            <h1 className="mt-2">{t('congrats')}</h1>
-            <p className="flex items-center justify-center flex-wrap">
+            <h1 className="mt-2 md:text-xl">{t('congrats')}</h1>
+            <p className="flex md:text-xl items-center justify-center flex-wrap">
               {replaceWordWithLogo(t('goToTourinform'), 'Tourinform', tourinform)}
             </p>
-            <p className="flex items-center justify-center flex-wrap">
+            <p className="flex md:text-xl items-center justify-center flex-wrap">
               {replaceWordWithLogo(t('goToNostalgia'), 'Nostalgiafoto', Logo2)}
             </p>
             <img
               src={farewellMouse}
               alt="image of Prince Magnus Mousecastle"
-              className="w-48 aspect-auto"
+              className="w-48 md:w-56 lg:w-64 aspect-auto"
             />
-            <p>{t('farewell')}</p>
+            <p className=" md:text-xl">{t('farewell')}</p>
             <div>
-              <p>{t('bye')}</p>
+              <p className=" md:text-xl">{t('bye')}</p>
               {/* Signature animation */}
               <p
-                // className="text-amber-900"
+                className="text-amber-900"
                 style={{
                   fontFamily: 'Dancing Script, cursive',
-                  transform: 'rotate(-15deg)',
+                  transform: 'rotate(-19deg)',
                   display: 'inline-block',
-                  fontWeight: '200',
-                  fontSize: '1.2rem',
-                  marginLeft: '5.5em',
+                  fontWeight: '500',
+                  fontSize: '1.3rem',
+                  marginLeft: '5em',
                   
                 }}
               >
@@ -131,11 +132,11 @@ export default function Submission() {
               className="w-48 mt-14 mb-4 aspect-auto"
             />
             <h1 className="mt-4 text-lg">{t('pwdConfimation')}</h1>
-            <div className="password-display w-full text-center rounded py-4 font-bold text-2xl border-4 min-h-16 border-amber-400 bg-slate-100">
+            <div className="password-display w-full text-center rounded py-2 px-6 font-bold text-lg border-4 min-h-14 border-amber-400 bg-slate-100">             
               {password ? (
                 <p className="text-rose-800">{password}</p>
               ) : (
-                <p className="italic text-sm text-slate-400 font-light">...missing password...</p>
+                <p className="italic text-sm text-slate-400 font-light">{t('missingPwd')}</p>
               )}
             </div>
             <p className="italic mt-8">{t('submissionQ')}</p>

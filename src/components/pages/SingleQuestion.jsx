@@ -126,16 +126,18 @@ export default function SingleQuestion() {
   }, [id, answer, initInputWithHints, storageKey])
 
   return (
-    <section className="flex flex-col justify-between items-center h-full">
-      <img src={question.img_url} alt={`Question ${question.id}`} />
-      <div className="question text-center flex flex-col gap-4">
-        <h1 className="font-bold text-2xl">
+    <section className="flex flex-col items-center min-h-screen p-2">
+      <div className="w-full max-w-md">
+      <img src={question.img_url} alt={`Question ${question.id}`} className="w-full h-auto mb-4"/>
+      <div className="question text-center mb-8">
+        <h1 className="font-bold text-xl mb-4">
           {t('question')} {question.id + 1}
         </h1>
         <p>{t(question.question)}</p>
       </div>
+      </div>
 
-      <div className="answer flex flex-col gap-4 text-center">
+      <div className="answer w-full max-w-md mb-10">
         <div className="flex flex-wrap justify-center">
           {userInput.map((char, index) => {
             const applyCustomMargin = isEnglish && id === '0' && index === 2
@@ -154,9 +156,8 @@ export default function SingleQuestion() {
                 style={{
                   display: 'flex',
                   justifyContent: 'center',
-                  position: 'relative',
-                  marginRight: applyCustomMargin ? '8px' : '0',
                 }}
+                className={`relative ${applyCustomMargin ? 'mr-2' : ''}`}
               >
                 <InputBox
                   size={12}

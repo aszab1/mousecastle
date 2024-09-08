@@ -21,24 +21,25 @@ export const Hero = () => {
     <>
       <section id="hero" className="flex flex-col gap-8 h-full items-center justify-center">
         <Nav />
-        <img src={HeroImage} alt="hero-image" />
+        <img src={HeroImage} alt="hero-image" className="mt-52 w-full max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg"/>
+        
         <h1>Válassz nyelvet a kezdéshez:</h1>
         <div className="languages flex gap-8">
           <img
-            className="w-16 h-full rounded-md hover:scale-105 transition-all duration-300"
+            className="w-16 h-10 object-cover rounded-md hover:scale-105 transition-all duration-300"
             src={Hungarian}
             alt="select-hungarian"
             onClick={() => handleLanguageChange('hu')}
           />
           <img
-            className="w-16 h-full rounded-md hover:scale-105 transition-all duration-300"
+            className="w-16 h-10 object-cover rounded-md hover:scale-105 transition-all duration-300"
             src={English}
             alt="select-english"
             onClick={() => handleLanguageChange('en')}
           />
 
           <img
-            className="w-16 h-full rounded-md hover:scale-105 transition-all duration-300"
+            className="w-16 h-10 object-cover rounded-md hover:scale-105 transition-all duration-300"
             src={German}
             alt="select-german"
             onClick={() => handleLanguageChange('de')}

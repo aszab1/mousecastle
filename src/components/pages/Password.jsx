@@ -70,14 +70,17 @@ export default function Password() {
 
   return (
     <>
-      <section id="password" className="flex flex-col gap-4 items-center justify-between h-full">
-        <img src={PasswordMouse} alt="image of Prince Magnus Mousecastle writing a letter" />
-        <div className="flex flex-col gap-4 text-center mb-auto">
-          <h1 className="text-2xl">{t('howTo')}</h1>
-          <p>{t('pwdExplanation1')}</p>
-          <p>{t('pwdExplanation2')}</p>
+      <section id="password" className="flex flex-col gap-4 items-center justify-between min-h-screen p-1">
+        <div className="w-full max-w-md">
+        <img src={PasswordMouse} alt="image of Prince Magnus Mousecastle writing a letter" 
+        className="w-full h-auto rounded-lg shadow-md mb-6"/>
+        <div className="text-center mb-6">
+          <h1 className="text-xl" style={{ fontWeight: 550 }}>{t('howTo')}</h1>
+          <p className="mt-5 mb-4">{t('pwdExplanation1')}</p>
+          <p >{t('pwdExplanation2')}</p>
         </div>
-        <div className="password-boxes flex flex-wrap gap-2 justify-center h-fit">
+        </div>
+        <div className="password-boxes flex flex-wrap gap-2 justify-center mb-2">
           {passwordData && passwordData.codes.map((code, index) => (
               <InputBox 
               size={12}
@@ -89,8 +92,10 @@ export default function Password() {
               />
           ))}
         </div>
-        <p className="text-center">{t('pwdExplanation3')}</p>
-        <PrimaryButton text={t('submit')} onClick={() => navigate('/submission')}/>
+        <div className="w-full max-w-md text-center">
+        <p className="w-full max-w-md text-center mb-6">{t('pwdExplanation3')}</p>
+        <PrimaryButton text={t('submit')} onClick={() => navigate('/submission')} className="mb-5"/>
+        </div>
       </section>
     </>
   )

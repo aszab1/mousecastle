@@ -55,7 +55,9 @@
   "answer": "Answer",
   "next": "Next",
   "back": "Back",
-  "home": "Home"
+  "home": "Home",
+  "missingPwd": "...missing password..."
+
 }
 
 

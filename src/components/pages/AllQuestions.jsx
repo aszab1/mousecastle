@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { PrimaryButton } from './PrimaryButton.jsx';
 import { DisplayOnlyBox } from './InputBoxes.jsx';
 
+
 export const AllQuestions = () => {
   // 't' function from useTranslation dynamically renders text based on selected language
   const { t } = useTranslation();
@@ -39,10 +40,10 @@ export const AllQuestions = () => {
 
   return (
     <>
-      <section id="all-questions">
+      <section id="all-questions" className="space-y-6 md:space-y-8 lg:space-y-10">
         <div className="questions flex flex-col h-screen py-6 gap-2 justify-center">
           <h1 className="italic">{t('introToAllQs')}</h1>
-          <div className="questions-list"></div>
+          <div className="questions-list space-y-4 md:space-y-6"></div>
           {Questions.map((question) => (
             <Link to={`/question/${question.id}`} key={question.id}>
               <div
@@ -55,7 +56,7 @@ export const AllQuestions = () => {
                     answers[question.id].map((char, index) => {
                       if (char === '\n') {
                         // Render a new line instead of an input box for the line break character
-                        return <div key={index} className="w-full"></div>;
+                        return <div key={index} className="w-full"></div>
                       }
                       return (
                         <DisplayOnlyBox
@@ -64,11 +65,7 @@ export const AllQuestions = () => {
                           borderColor={question.bg_border_code}
                         >
                           <span
-                            className="font-bold"
-                            style={{
-                              marginRight: question.id === 0 && index === 2 ? '8px' : '0',
-                            }}
-                          >
+                            className="font-bold">
                             {char.toUpperCase()}
                           </span>
                         </DisplayOnlyBox>
@@ -85,7 +82,7 @@ export const AllQuestions = () => {
           <PrimaryButton
             text={t('solvePwd')}
             onClick={() => passwordRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' })}
-            style={'my-4'}
+            className="w-full md:w-auto md:px-8 my-4"
           />
         </div>
         <div className="h-screen py-6" ref={passwordRef}>

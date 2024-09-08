@@ -55,5 +55,6 @@
   "answer": "Válaszod",
   "next": "Következő",
   "back": "Vissza",
-  "home": "Kezdőlap"
+  "home": "Kezdőlap",
+  "missingPwd": "...hiányzó jelszó..."
 }
