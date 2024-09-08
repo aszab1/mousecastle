@@ -87,6 +87,7 @@ export const Passwords = [
   {
     lang: 'hu',
     pass: 'MÁKOS BEJGLI',
+    pass1: 'MAKOS BEJGLI',
     codes: [
       {codeLocation: '5/1', bg_clr_code: '#ff75b0', bg_border_code: '#a31a73'},
       {codeLocation: '6/7', bg_clr_code: '#b9ff8e', bg_border_code: '#34a51e'},
