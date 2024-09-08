@@ -31,12 +31,16 @@ export default function SingleQuestion() {
 
     // hint logic for 6th qestiom, id 5
     const hintForIdFive = () => {
+      if (answer.includes(' ')) {
       const [firstWord, secondWord] = answer.split(' ')
       return [
         ...firstWord.split('').map((char, index) => (index === hintIndex ? char : '')),
         '\n',
         ...secondWord.split('').map(() => ''),
       ]
+    } else {
+      return answer.split('').map((char, index) => (index === hintIndex ? char : ''))
+    }
 
     }
     // Default hint logic for other questions
@@ -138,10 +142,10 @@ export default function SingleQuestion() {
             const [firstWord, secondWord] = answer.split(' ')
 
             // Determine if the current index is in the second word or beyond the last character of the first word
-            const isSecondWordChar =(id === '3' && index > firstWord.length) || (id === '5' && index > firstWord.length)
+            const isSecondWordChar =(id === '3' && index > firstWord.length) || (id === '5' && secondWord && index > firstWord.length)
 
-            if (char === '\n') {
-              return <div key={index} className="w-full"></div>; // Render line break without an input
+            if (char === '\n' && secondWord) {
+              return <div key={index} className="w-full"></div> // Render line break without an input
             }
 
             return (
