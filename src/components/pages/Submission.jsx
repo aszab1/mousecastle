@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { PrimaryButton } from './PrimaryButton';
 import tourinform from '../../assets/images/t-godollo.png';
 import Logo2 from '../../assets/images/Nostalgiafoto.png';
-import Logo3 from '../../assets/images/favicon.jpg';
+import Logo3 from '../../assets/images/favicon1.jpg';
 import { Passwords } from '../../assets/questions';
 import { SelectedLanguage } from './SelectedLanguage';
 
