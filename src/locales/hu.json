@@ -38,7 +38,7 @@
   "introToAllQs": "Kattints és válaszolj az összes kérdésre, majd kattints a jelszó megfejtésre!",
   "solvePwd": "Jelszó Megfejtés",
   "howTo": "Hogyan fejtsd meg a jelszót",
-  "pwdExplanation1": "Nézd meg a nyomokat, például az első betű 5/1. Ez azt jelenti, hogy vedd az ötödik válaszodból az 1. betűt.",
+  "pwdExplanation1": "Nézd meg a nyomokat, például az első betű 5/1. Ez azt jelenti, hogy vedd az ötödik válaszodból az első betűt.",
   "pwdExplanation2": "Gyűjtsd össze az összes betűt, amire szükséged van a jelszóhoz.",
   "pwdExplanation3": "Ha kész vagy, nyomd meg a Küldés gombot, hogy megtudd, mi a következő lépés!",
   "submit": "Küldés",
