@@ -40,7 +40,7 @@ export const AllQuestions = () => {
 
   return (
     <>
-      <section id="all-questions" className="space-y-6 md:space-y-8 lg:space-y-10">
+      <section id="all-questions" className="space-y-6 md:space-y-8 lg:space-y-10 max-w-full md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto">
         <div className="questions flex flex-col h-screen py-6 gap-2 justify-center">
           <h1 className="italic">{t('introToAllQs')}</h1>
           <div className="questions-list space-y-4 md:space-y-6"></div>
@@ -79,11 +79,13 @@ export const AllQuestions = () => {
               </div>
             </Link>
           ))}
+          <div className="w-full md:w-auto flex justify-center">
           <PrimaryButton
             text={t('solvePwd')}
             onClick={() => passwordRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' })}
-            className="w-full md:w-auto md:px-8 my-4"
+            className="my-4"
           />
+          </div>
         </div>
         <div className="h-screen py-6" ref={passwordRef}>
           <Password />

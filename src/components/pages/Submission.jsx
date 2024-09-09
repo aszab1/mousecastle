@@ -132,7 +132,7 @@ export default function Submission() {
               className="w-48 mt-14 mb-4 aspect-auto"
             />
             <h1 className="mt-4 text-lg">{t('pwdConfimation')}</h1>
-            <div className="password-display w-full text-center rounded py-2 px-6 font-bold text-lg border-4 min-h-14 border-amber-400 bg-slate-100">             
+            <div className="password-display w-auto max-w-md text-center rounded py-4 px-10 font-bold text-lg border-4 min-h-14 border-amber-400 bg-slate-100 mx-auto">             
               {password ? (
                 <p className="text-rose-800">{password}</p>
               ) : (
