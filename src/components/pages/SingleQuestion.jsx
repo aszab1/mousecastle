@@ -71,7 +71,7 @@ export default function SingleQuestion() {
 
   // Helper function to update state and save input to sessionStorage
   const saveInput = (input) => {
-    setUserInput(input);
+    setUserInput(input)
     sessionStorage.setItem(storageKey, JSON.stringify(input))
   }
 
@@ -83,7 +83,7 @@ export default function SingleQuestion() {
 
     // Focuses the next available input field based on direction (1 for forward, -1 for backward)
     const focusNextAvailableInput = (startIndex, direction = 1) => {
-      let nextIndex = startIndex + direction;
+      let nextIndex = startIndex + direction
 
       // Prevent focusing on the second word for the 4th question
       while (
@@ -93,12 +93,12 @@ export default function SingleQuestion() {
           (id === '3' && (userInput[nextIndex] === '\n' || nextIndex > answer.split(' ')[0].length))) ||
           (id === '5' && userInput[nextIndex] === '\n')
       ) {
-        nextIndex += direction;
+        nextIndex += direction
       }
 
       // Focus the next valid input field
       if (nextIndex >= 0 && nextIndex < userInput.length) {
-        inputRefs.current[nextIndex]?.focus();
+        inputRefs.current[nextIndex]?.focus()
       }
     };
 
@@ -118,7 +118,7 @@ export default function SingleQuestion() {
   useEffect(() => {
     try {
       const savedInput = sessionStorage.getItem(storageKey);
-      setUserInput(savedInput ? JSON.parse(savedInput) : initInputWithHints());
+      setUserInput(savedInput ? JSON.parse(savedInput) : initInputWithHints())
     } catch (error) {
       console.error('Error parsing:', error)
       setUserInput(initInputWithHints())
@@ -126,8 +126,8 @@ export default function SingleQuestion() {
   }, [id, answer, initInputWithHints, storageKey])
 
   return (
-    <section className="flex flex-col items-center min-h-screen p-2">
-      <div className="w-full max-w-md">
+    <section className=" relative flex flex-col items-center min-h-screen p-2">
+      <div className="w-full max-w-md mt-4">
       <img src={question.img_url} alt={`Question ${question.id}`} className="w-full h-auto mb-4"/>
       <div className="question text-center mb-8">
         <h1 className="font-bold text-xl mb-4">
@@ -176,7 +176,7 @@ export default function SingleQuestion() {
                   }}
                 />
               </div>
-            );
+            )
           })}
         </div>
       </div>

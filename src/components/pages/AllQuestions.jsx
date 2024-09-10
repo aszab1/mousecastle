@@ -40,8 +40,8 @@ export const AllQuestions = () => {
 
   return (
     <>
-      <section id="all-questions" className="space-y-6 md:space-y-8 lg:space-y-10 max-w-full md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto">
-        <div className="questions flex flex-col h-screen py-6 gap-2 justify-center">
+      <section id="all-questions" className="relative space-y-6 md:space-y-8 lg:space-y-10 max-w-full md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto">
+        <div className="questions flex flex-col h-screen py-6 gap-2 justify-center mt-8">
           <h1 className="italic">{t('introToAllQs')}</h1>
           <div className="questions-list space-y-4 md:space-y-6"></div>
           {Questions.map((question) => (

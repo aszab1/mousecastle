@@ -20,7 +20,7 @@ export const QuestionNavigation = ({ questionId, question }) => {
         )}
         <div className="go-to-all-questions flex flex-col items-center gap-1">
           <PiListBulletsFill className="size-12" onClick={() => navigate('/questions')} />
-          <p>{t('home')}</p>
+          <p>{t('questions')}</p>
         </div>
         {questionId < Questions.length - 1 && (
           <div className="next-question flex flex-col items-center gap-1">

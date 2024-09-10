@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 
 export const SelectedLanguage = () => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const currentLang = i18n.language;
   const navigate = useNavigate();
 
@@ -16,13 +16,15 @@ export const SelectedLanguage = () => {
   };
 
   return (
-    <>
+    <div className="absolute top-2 right-2 md:right-20 lg:right-36  z-10">
+      <p className="italic text-[10px] text-right mb-1">{t('home')}</p>
       <img
         src={languageImages[currentLang]}
         alt="selected-language-flag"
-        className="absolute top-4  right-4 h-4 rounded aspect-video"
+        className="h-4 rounded aspect-video cursor-pointer"
         onClick={() => navigate('/')}
       />
-    </>
+      
+    </div>
   );
 };

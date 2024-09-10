@@ -75,7 +75,7 @@ export default function Submission() {
   return (
     <>
       <section id="submission" className="flex flex-col gap-3 items-center text-center h-full">
-        <div className="absolute top-1 left-2">
+        <div className="absolute top-1 left-2 md:left-10 lg:left-24">
           <img src={Logo3} alt="" className="size-10" />
         </div>
         <SelectedLanguage />
