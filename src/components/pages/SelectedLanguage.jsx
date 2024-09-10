@@ -17,7 +17,7 @@ export const SelectedLanguage = () => {
 
   return (
     <div className="absolute top-2 right-2 md:right-20 lg:right-36  z-10">
-      <p className="italic text-[10px] text-right mb-1">{t('home')}</p>
+      <p className="italic text-[10px] text-right">{t('home')}</p>
       <img
         src={languageImages[currentLang]}
         alt="selected-language-flag"
