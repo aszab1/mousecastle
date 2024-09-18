@@ -5,5 +5,5 @@ export const Nav = () => {
     <nav className="absolute top-12">
       <img src={Logo} alt="museum-logo" className="w-50 aspect-auto" />
     </nav>
-  );
-};
+  )
+}

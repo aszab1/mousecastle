@@ -87,10 +87,10 @@ export default function Submission() {
             <div className="password-display w-auto max-w-md text-center py-2 px-6 font-bold text-lg border-4 min-h-14 border-amber-400 bg-gradient-to-r from-amber-50 to-amber-100 shadow-md mx-auto">
 
               {password ? (
-              <p className="text-amber-900">{password}</p>
-            ) : (
-              <p className="italic text-sm text-slate-400 font-light">{t('missingPw')}</p>
-            )}
+                <p className="text-amber-900">{password}</p>
+              ) : (
+                <p className="italic text-sm text-slate-400 font-light">{t('missingPw')}</p>
+              )}
             </div>
             <h1 className="mt-2 md:text-xl">{t('congrats')}</h1>
             <p className="flex md:text-xl items-center justify-center flex-wrap">
@@ -117,7 +117,7 @@ export default function Submission() {
                   fontWeight: '500',
                   fontSize: '1.3rem',
                   marginLeft: '5em',
-                  
+
                 }}
               >
                 {signatureText}
@@ -132,7 +132,7 @@ export default function Submission() {
               className="w-48 mt-14 mb-4 aspect-auto"
             />
             <h1 className="mt-4 text-lg">{t('pwdConfimation')}</h1>
-            <div className="password-display w-auto max-w-md text-center rounded py-4 px-10 font-bold text-lg border-4 min-h-14 border-amber-400 bg-slate-100 mx-auto">             
+            <div className="password-display w-auto max-w-md text-center rounded py-4 px-10 font-bold text-lg border-4 min-h-14 border-amber-400 bg-slate-100 mx-auto">
               {password ? (
                 <p className="text-rose-800">{password}</p>
               ) : (

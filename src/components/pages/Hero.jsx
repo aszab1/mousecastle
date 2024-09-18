@@ -7,15 +7,15 @@ import i18next from 'i18next';
 import { Nav } from './Nav.jsx';
 
 export const Hero = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleLanguageChange = (lang) => {
-    i18next.changeLanguage(lang);
+    i18next.changeLanguage(lang)
 
-    localStorage.setItem('language', lang);
-    sessionStorage.clear();
-    navigate('/instructions');
-  };
+    localStorage.setItem('language', lang)
+    sessionStorage.clear()
+    navigate('/instructions')
+  }
 
   return (
     <>
@@ -47,5 +47,5 @@ export const Hero = () => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}

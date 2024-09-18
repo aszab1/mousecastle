@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+
 import { useNavigate } from 'react-router-dom';
 import PasswordMouse from '../../assets/images/writing-mouse1.jpg';
 import { Passwords } from '../../assets/questions';
@@ -15,6 +15,20 @@ export default function Password() {
   const storageKey = `password-input-${currentLang}`
 
   const passwordData = Passwords.find((password) => password.lang === currentLang)
+
+  const [inputSize, setInputSize] = useState(window.innerWidth > 768 ? 12 : 10)
+
+
+  useEffect(() => {
+    const handleResize = () => {
+      setInputSize(window.innerWidth > 768 ? 12 : 10)
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   const [passwordInput, setPasswordInput] = useState(() => {
     const savedPassword = sessionStorage.getItem(storageKey)
@@ -34,17 +48,17 @@ export default function Password() {
   }
 
   const handleInputChange = (e, index) => {
-    const { value } = e.target;
-    const newPasswordInput = [...passwordInput];
+    const { value } = e.target
+    const newPasswordInput = [...passwordInput]
 
     if (value) {
       // Add character and move to the next box
-      newPasswordInput[index] = value.toUpperCase();
-      setPasswordInput(newPasswordInput);
-      sessionStorage.setItem(storageKey, formatPassword(newPasswordInput));
+      newPasswordInput[index] = value.toUpperCase()
+      setPasswordInput(newPasswordInput)
+      sessionStorage.setItem(storageKey, formatPassword(newPasswordInput))
 
       if (value.length === 1 && index < passwordData.codes.length - 1) {
-        inputRefs.current[index + 1].focus();
+        inputRefs.current[index + 1].focus()
       }
     } else {
       // Handle backspace and move to the previous box
@@ -83,7 +97,7 @@ export default function Password() {
         <div className="password-boxes flex flex-wrap gap-2 justify-center mb-2">
           {passwordData && passwordData.codes.map((code, index) => (
               <InputBox 
-              size={12}
+              size={inputSize}
               key={index}
               color={code}
               inputRef={(el) => (inputRefs.current[index] = el)} // Assign ref to each input

@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router';
 import { Questions } from '../../assets/questions.js';
 
 export const QuestionNavigation = ({ questionId, question }) => {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
+  const { t } = useTranslation()
+  const navigate = useNavigate()
 
   return (
     <>
@@ -30,5 +30,5 @@ export const QuestionNavigation = ({ questionId, question }) => {
         )}
       </div>
     </>
-  );
-};
+  )
+}

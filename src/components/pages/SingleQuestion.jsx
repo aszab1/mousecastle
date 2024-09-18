@@ -17,6 +17,20 @@ export default function SingleQuestion() {
   const hintIndex = 1
   const isEnglish = i18n.language === 'en'
 
+  const [inputSize, setInputSize] = useState(window.innerWidth > 768 ? 12 : 10)
+
+
+  useEffect(() => {
+    const handleResize = () => {
+      setInputSize(window.innerWidth > 768 ? 12 : 10)
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
   const initInputWithHints = useCallback(() => {
     // Hint logic specific to 4th question with ID '3'
     const hintForIdThree = () => {
@@ -32,15 +46,15 @@ export default function SingleQuestion() {
     // hint logic for 6th qestiom, id 5
     const hintForIdFive = () => {
       if (answer.includes(' ')) {
-      const [firstWord, secondWord] = answer.split(' ')
-      return [
-        ...firstWord.split('').map((char, index) => (index === hintIndex ? char : '')),
-        '\n',
-        ...secondWord.split('').map(() => ''),
-      ]
-    } else {
-      return answer.split('').map((char, index) => (index === hintIndex ? char : ''))
-    }
+        const [firstWord, secondWord] = answer.split(' ')
+        return [
+          ...firstWord.split('').map((char, index) => (index === hintIndex ? char : '')),
+          '\n',
+          ...secondWord.split('').map(() => ''),
+        ]
+      } else {
+        return answer.split('').map((char, index) => (index === hintIndex ? char : ''))
+      }
 
     }
     // Default hint logic for other questions
@@ -91,7 +105,7 @@ export default function SingleQuestion() {
         nextIndex < userInput.length &&
         (nextIndex === hintIndex ||
           (id === '3' && (userInput[nextIndex] === '\n' || nextIndex > answer.split(' ')[0].length))) ||
-          (id === '5' && userInput[nextIndex] === '\n')
+        (id === '5' && userInput[nextIndex] === '\n')
       ) {
         nextIndex += direction
       }
@@ -128,13 +142,13 @@ export default function SingleQuestion() {
   return (
     <section className=" relative flex flex-col items-center min-h-screen p-2">
       <div className="w-full max-w-md mt-4">
-      <img src={question.img_url} alt={`Question ${question.id}`} className="w-full h-auto mb-4"/>
-      <div className="question text-center mb-8">
-        <h1 className="font-bold text-xl mb-4">
-          {t('question')} {question.id + 1}
-        </h1>
-        <p>{t(question.question)}</p>
-      </div>
+        <img src={question.img_url} alt={`Question ${question.id}`} className="w-full h-auto mb-4" />
+        <div className="question text-center mb-8">
+          <h1 className="font-bold text-xl mb-4">
+            {t('question')} {question.id + 1}
+          </h1>
+          <p>{t(question.question)}</p>
+        </div>
       </div>
 
       <div className="answer w-full max-w-md mb-10">
@@ -144,7 +158,7 @@ export default function SingleQuestion() {
             const [firstWord, secondWord] = answer.split(' ')
 
             // Determine if the current index is in the second word or beyond the last character of the first word
-            const isSecondWordChar =(id === '3' && index > firstWord.length) || (id === '5' && secondWord && index > firstWord.length)
+            const isSecondWordChar = (id === '3' && index > firstWord.length) || (id === '5' && secondWord && index > firstWord.length)
 
             if (char === '\n' && secondWord) {
               return <div key={index} className="w-full"></div> // Render line break without an input
@@ -160,7 +174,7 @@ export default function SingleQuestion() {
                 className={`relative ${applyCustomMargin ? 'mr-2' : ''}`}
               >
                 <InputBox
-                  size={12}
+                  size={inputSize}
                   color={question}
                   inputRef={(el) => (inputRefs.current[index] = el)}
                   onChange={(e) => handleInputChange(e, index)}

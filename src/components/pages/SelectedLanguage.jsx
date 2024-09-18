@@ -5,15 +5,15 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 
 export const SelectedLanguage = () => {
-  const { i18n, t } = useTranslation();
-  const currentLang = i18n.language;
-  const navigate = useNavigate();
+  const { i18n, t } = useTranslation()
+  const currentLang = i18n.language
+  const navigate = useNavigate()
 
   const languageImages = {
     hu: Hungarian,
     en: English,
     de: German,
-  };
+  }
 
   return (
     <div className="absolute top-2 right-2 md:right-20 lg:right-36  z-10">
@@ -26,5 +26,5 @@ export const SelectedLanguage = () => {
       />
       
     </div>
-  );
-};
+  )
+}

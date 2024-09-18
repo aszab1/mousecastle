@@ -10,33 +10,33 @@ import { DisplayOnlyBox } from './InputBoxes.jsx';
 
 export const AllQuestions = () => {
   // 't' function from useTranslation dynamically renders text based on selected language
-  const { t } = useTranslation();
-  const passwordRef = useRef(null);
-  const [scrollToPassword, setScrollToPassword] = useState(false);
+  const { t } = useTranslation()
+  const passwordRef = useRef(null)
+  const [scrollToPassword, setScrollToPassword] = useState(false)
   const { hash } = useLocation(); // destructure hash from location
 
   const [answers] = useState(() =>
     Questions.map((_, index) => {
-      const savedAnswer = sessionStorage.getItem(`question-${index}-input`);
+      const savedAnswer = sessionStorage.getItem(`question-${index}-input`)
       if (savedAnswer) {
         try {
-          const parsedAnswer = JSON.parse(savedAnswer);
-          return Array.isArray(parsedAnswer) ? parsedAnswer : parsedAnswer.split('');
+          const parsedAnswer = JSON.parse(savedAnswer)
+          return Array.isArray(parsedAnswer) ? parsedAnswer : parsedAnswer.split('')
         } catch (error) {
           console.error('Error parsing saved answer:', error);
-          return [];
+          return []
         }
       }
-      return [];
+      return []
     })
-  );
+  )
 
   useEffect(() => {
     if (hash === '#solve-password' && !scrollToPassword) {
-      passwordRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setScrollToPassword(true);
+      passwordRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      setScrollToPassword(true)
     }
-  }, [hash, scrollToPassword]);
+  }, [hash, scrollToPassword])
 
   return (
     <>
@@ -69,7 +69,7 @@ export const AllQuestions = () => {
                             {char.toUpperCase()}
                           </span>
                         </DisplayOnlyBox>
-                      );
+                      )
                     })
                   ) : (
                     <span className="font-bold">{`${t('question')} ${question.id + 1}`}</span>
@@ -92,5 +92,5 @@ export const AllQuestions = () => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}

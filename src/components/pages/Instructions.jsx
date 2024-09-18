@@ -39,5 +39,5 @@ export const Instructions = () => {
         <PrimaryButton text={t('start')} onClick={() => navigate('/questions')}/>
       </section>
     </>
-  );
-};
+  )
+}

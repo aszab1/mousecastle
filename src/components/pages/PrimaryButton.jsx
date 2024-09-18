@@ -11,5 +11,5 @@ export const PrimaryButton = ({ text, onClick, style, className }) => {
     >
       {text}
     </button>
-  );
-};
+  )
+}
