@@ -61,16 +61,17 @@ export default function Submission() {
     navigate('/questions#solve-password')
   }
 
-  const replaceWordWithLogo = (text, word, logo) => {
-    const parts = text.split(word)
-    return (
-      <>
-        {parts[0]}
-        <img src={logo} alt={`${word} logo`} className="inline h-6 mx-1" />
-        {parts[1]}
-      </>
-    )
-  }
+  // const replaceWordWithLogo = (text, word, logo) => {
+  //   const parts = text.split(word)
+  //   return (
+  //     <>
+  //       {parts[0]}
+  //       <img src={logo} alt={`${word} logo`} className="inline h-6 mx-1" />
+  //       {parts[1]}
+  //     </>
+  //   )
+  // }
+
 
   return (
     <>
@@ -93,12 +94,18 @@ export default function Submission() {
               )}
             </div>
             <h1 className="mt-2 md:text-xl">{t('congrats')}</h1>
-            <p className="flex md:text-xl items-center justify-center flex-wrap">
-              {replaceWordWithLogo(t('goToTourinform'), 'Tourinform', tourinform)}
+            <p className="flex md:text-xl items-center justify-center flex-wrap ">
+              {/* {replaceWordWithLogo(t('goToTourinform'), 'Tourinform', tourinform)} */}
+              {t('goToTourinform')}
+              <img style={{width: '80px'}} src={tourinform} alt="logo of Tourinform Gödöllő" />
+        
             </p>
-            <p className="flex md:text-xl items-center justify-center flex-wrap">
-              {replaceWordWithLogo(t('goToNostalgia'), 'Nostalgiafoto', Logo2)}
+            <p className="flex md:text-xl items-center justify-center flex-wrap space-x-2">
+              {/* {replaceWordWithLogo(t('goToNostalgia'), 'Nostalgiafoto', Logo2)} */}
+              {t('goToNostalgia')}
+               <img style={{width: '80px'}} src={Logo2} alt="logo of Nosztalgiafotó" />
             </p>
+            
             <img
               src={farewellMouse}
               alt="image of Prince Magnus Mousecastle"

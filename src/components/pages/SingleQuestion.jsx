@@ -131,7 +131,7 @@ export default function SingleQuestion() {
   // Effect to load saved input on component mount or when ID/answer changes
   useEffect(() => {
     try {
-      const savedInput = sessionStorage.getItem(storageKey);
+      const savedInput = sessionStorage.getItem(storageKey)
       setUserInput(savedInput ? JSON.parse(savedInput) : initInputWithHints())
     } catch (error) {
       console.error('Error parsing:', error)
@@ -142,12 +142,12 @@ export default function SingleQuestion() {
   return (
     <section className=" relative flex flex-col items-center min-h-screen p-2">
       <div className="w-full max-w-md mt-4">
-        <img src={question.img_url} alt={`Question ${question.id}`} className="w-full h-auto mb-4" />
+        <img src={question.img_url} alt={`Question ${question.id}`} className="w-full max-h-64 object-contain mb-4" />
         <div className="question text-center mb-8">
           <h1 className="font-bold text-xl mb-4">
             {t('question')} {question.id + 1}
           </h1>
-          <p>{t(question.question)}</p>
+          <p className="whitespace-pre-line">{t(question.question)}</p>
         </div>
       </div>
 

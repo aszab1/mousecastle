@@ -1,10 +1,10 @@
-import Image1 from './images/welcome-mouse-pic.jpg';
-import Image2 from './images/all-the-char.jpg';
-import Image3 from './images/pic4.jpeg';
-import Image4 from './images/pic3.jpeg';
-import Image5 from './images/pic5.jpeg';
-import Image6 from './images/mates-mouses.jpg';
-import Image7 from './images/welcome-mouse-pic.jpg';
+import Image1 from './images/1.jpg'
+import Image2 from './images/2.jpg'
+import Image3 from './images/3.jpg'
+import Image4 from './images/4.jpg'
+import Image5 from './images/5.jpg'
+import Image6 from './images/6.jpg'
+import Image7 from './images/7.jpg'
 
 export const Questions = [
   {

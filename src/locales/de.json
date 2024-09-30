@@ -1,9 +1,9 @@
 {
   "welcome": "Willkommen!",
   "intro1": "Mein Name ist Herzog Elmar von Mausburg, ich bin der Besitzer des Schlosses.",
-  "intro2": "Heute kannst du einige der Geheimnisse meines Palastes entdecken, wenn du die 7 Spielkästen im Obergeschoss findest.",
-  "clue": "Wenn du das Rätsel richtig löst und das Lösungswort errätst, bekommst du im Tourinform Büro des Schlosses eine 'Goldmünze' oder einen Aufkleber mit derAbbildung des Schlosses.",
-  "hint": "Ich verrate dir:",
+  "intro2": "Heute kannst du einige der Geheimnisse meines Schlosses entdecken, wenn du die 7 Spielkästen im Obergeschoss findest.",
+  "clue": "Wenn du das Rätsel richtig löst und das Lösungswort errätst, bekommst du im Tourinform Büro des Schlosses eine 'Goldmünze' oder einen Aufkleber mit der Abbildung des Schlosses.",
+  "hint": "Ich verrate dir,",
   "dessertHint": "dass das Lösungswort der Lieblingskuchen meines Freundes, des Grafen Geza von Gorgonzola ist.",
   "goodLuck": "Viel Glück und viel Spaß!",
   "start": "Starten",
@@ -12,11 +12,11 @@
     "answer": "ZEHE"
   },
   "1": {
-    "question": "Als ich noch klein war, erzählte mir meine Oma Minka, dass dieses Schloss von einem bekannten, ungarischen Grafen erbaut wurde. Zuerst ließ er hier ein kleines Schloss bauen und später vergrößerte er es immer, wenn er reicher wurde. So haben wir hier genug Platz für uns. Wie war der Familienname des Grafen?",
+    "question": "Als ich noch klein war, erzählte mir meine Oma Minka, dass dieses Schloss von einem bekannten ungarischen Grafen erbaut wurde. Zuerst ließ er hier ein kleines Schloss bauen und später vergrößerte er es immer, wenn er reicher wurde. So haben wir hier genug Platz für uns. Wie war der Familienname des Grafen?",
     "answer": "GRASSALKOVICH"
   },
   "2": {
-    "question": "Die königliche Familie war oft bei mir im Schloss zu Besuch. König Franz Joseph I. verbrachte seine Zeit auch hier mit viel Arbeit. Ich war dessen schon überdrüssig, deswegen siehst du mich auf dem Bild",
+    "question": "Die königliche Familie war oft bei mir im Schloss zu Besuch.\nKönig Franz Joseph I. verbrachte seine Zeit auch hier mit viel Arbeit. Ich war dessen schon überdrüssig, deswegen siehst du mich auf dem Bild",
     "answer": "GÄHNEN"
   },
   "3": {
@@ -37,7 +37,7 @@
   },
   "introToAllQs": "Klicke und beantworte alle Fragen, dann klicke, um das Passwort zu lösen!",
   "solvePwd": "Passwort Lösen",
-  "howTo": "So löst du das Passwort",
+  "howTo": "So löst du das Passwort?",
   "pwdExplanation1": "Schau dir jeden Hinweis an, wie 7/1. Das bedeutet, dass du den ersten Buchstaben aus deiner siebten Antwort nimmst.",
   "pwdExplanation2": "Sammle alle Buchstaben, die du brauchst, um das Passwort zu bilden.",
   "pwdExplanation3": "Wenn du fertig bist, drücke Absenden, um zu sehen, was als Nächstes zu tun ist!",
@@ -47,8 +47,8 @@
   "changePwdBtn": "Passwort ändern",
   "congrats": "Herzlichen Glückwunsch, dass du das Passwort entschlüsseln konntest!",
   "goToTourinform": "Gehe jetzt zum Tourinform-Büro, um deinen Preis abzuholen!",
-  "goToNostalgia": "Und vergiss nicht, den Nostalgiafoto-Laden zu besuchen!",
-  "farewell": "Bis Zum nächsten Mal!",
+  "goToNostalgia": "Und vergiss nicht das Nostalgie Fotostudio zu besuchen!",
+  "farewell": "Bis zum nächsten Mal!",
   "bye": "Tschüss! Auf Wiedersehen!",
   "magnus": "Herzog Elmar von Mausburg",
   "question": "Frage",

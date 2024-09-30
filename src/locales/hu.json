@@ -1,22 +1,22 @@
 {
   "welcome": "Üdvözöllek!",
   "intro1": "Herceg Egérváry Elemér vagyok, a kastély tulajdonosa.",
-  "intro2": "A kastélyom titkaiból ma Te is felfedezhetsz néhányat, ha az emeleten megkeresed és jól megfigyeled mind a 7 darab EGÉRlesö meseLYUKAT!",
-  "clue": "Sőt, ha ügyesen kitöltöd a rejtvényt és megfejted a jelszót, akkor a játék végén, a Tourinform irodában kastélyos aranytallért vagy matricát kapsz!",
+  "intro2": "A kastélyom titkaiból ma Te is felfedezhetsz néhányat, ha az emeleten megkeresed és jól megfigyeled mind a 7 darab EGÉRleső meseLYUKAT!",
+  "clue": "Sőt, ha ügyesen kitöltöd a rejtvényt és megfejted a jelszót, akkor a játék végén, a Tourinform irodában kastélyos aranytalléromat vagy a portrémmal díszített matricát kapsz!",
   "hint": "Annyit segítek, hogy a jelszó:",
-  "dessertHint": "gróf Corgonzola Céza barátom kedvenc sütije. Mi is lenne más...",
+  "dessertHint": "gróf Gorgonzola Géza barátom kedvenc sütije. Mi is lenne más...",
   "goodLuck": "Sok szerencsét és jó szórakozást!",
   "start": "Kezdés",
   "0": {
-    "question": "Itt az előtérben Báró Kastély-Hazy Sándor barátom fedezte fel ezeket a szép, angyalkás falfestéseket. Most éppen azon gondolkodunk,hogy hány angyalkalábat fogunk még találni. Az angyalka hozzánk legközelebb eső testrésze:",
+    "question": "Itt az előtérben báró Kastély-Haázy Sándor barátom fedezte fel ezeket a szép, angyalkás falfestéseket. Most éppen azon gondolkodunk,hogy hány angyalkalábat fogunk még találni. Az angyalka hozzánk legközelebb eső testrésze:",
     "answer": "LÁBUJJ"
   },
   "1": {
-    "question": "Amikor kicsi voltam, Minka nagyi mesélte, hogy ezt a szép kastélyt Grassalkovich gróf építette nekünk. Először egy egész picit épített, és ahogy gazdagodott, úgy toldozgatta egyre nagyobbra. Így most jól elférünk benne. Mi volt a gróf keresztneve?",
+    "question": "Amikor kicsi voltam, Minka nagyi mesélte, hogy ezt a szép kastélyt Grassalkovich gróf építtette nekünk. Először egy egész picit épített, és ahogy gazdagodott, úgy toldozgatta egyre nagyobbra. Így most jól elférünk benne. Mi volt a gróf keresztneve?",
     "answer": "ANTAL"
   },
   "2": {
-    "question": "A kastélyomban gyakran láttam vendégül a királyi családot. I. Ferenc József ilyenkor is rengeteg munkával töltötte itt az időt. Ezt én eléggé untam, a képen éppen...",
+    "question": "A kastélyomban gyakran láttam vendégül a királyi családot. \nI. Ferenc József ilyenkor is rengeteg munkával töltötte itt az időt. Ezt én eléggé untam, a képen éppen...",
     "answer": "ÁSÍTOK"
   },
   "3": {
@@ -24,7 +24,7 @@
     "answer": "HATTYÚS TÓ"
   },
   "4": {
-    "question": "Erzsébet királyné gyönyörű hajának ápolása hosszú órákat vett igénybe. De ezt az idốt a királyné nagyon jól kihasználta: nyelvet tanult. Görögöt és ógörögöt. El is határoztam, hogy én is megtanulok egy új nyelvet. Tanulhatnék például:",
+    "question": "Erzsébet királyné gyönyörű hajának ápolása hosszú órákat vett igénybe. De ezt az időt a királyné nagyon jól kihasználta: nyelvet tanult. Görögöt és ógörögöt. El is határoztam, hogy én is megtanulok egy új nyelvet. Tanulhatnék például:",
     "answer": "MÓKUSUL"
   },
   "5": {
@@ -35,9 +35,9 @@
     "question": "A királyi pár legkisebb gyermeke, Mária Valéria ebben a szép, égszínkék lakosztályban lakott. A hercegnőnek szigorú napirendje volt, sok mindent kellett tanulnia. Gróf Gorgonzola Géza barátom gyakran kedvet kapott ahhoz, amit itt megfigyelt. Mit fog csinálni Géza, amikor hazamegy?",
     "answer": "FESTENI"
   },
-  "introToAllQs": "Kattints és válaszolj az összes kérdésre, majd kattints a jelszó megfejtésre!",
-  "solvePwd": "Jelszó Megfejtés",
-  "howTo": "Hogyan fejtsd meg a jelszót",
+  "introToAllQs": "Kattints és válaszolj az összes kérdésre, majd kattints a jelszó megfejtésére!",
+  "solvePwd": "Jelszó megfejtése",
+  "howTo": "Hogyan fejtsd meg a jelszót?",
   "pwdExplanation1": "Nézd meg a nyomokat, például az első betű 5/1. Ez azt jelenti, hogy vedd az ötödik válaszodból az első betűt.",
   "pwdExplanation2": "Gyűjtsd össze az összes betűt, amire szükséged van a jelszóhoz.",
   "pwdExplanation3": "Ha kész vagy, nyomd meg a Küldés gombot, hogy megtudd, mi a következő lépés!",
@@ -46,8 +46,8 @@
   "submissionQ": "Majdnem sikerült! Nézd meg újra a jelszót.",
   "changePwdBtn": "Jelszó Módosítása",
   "congrats": "Gratulálunk, hogy sikerült megfejtened a jelszót!",
-  "goToTourinform": "Akkor most irány a Tourinform iroda, hogy átvedd a nyereményed!",
-  "goToNostalgia": "És ne felejtsd el meglátogatni a Nostalgiafoto műtermet!",
+  "goToTourinform": "Akkor most irány a földszinti Tourinform Iroda, ahol átveheted a nyereményedet!",
+  "goToNostalgia": "És ne felejtsd el meglátogatni a Nosztalgiafotó műtermet!",
   "farewell": "Gyere máskor is!",
   "bye": "Viszontlátásra!",
   "magnus": "Herceg Egérváry Elemér",
