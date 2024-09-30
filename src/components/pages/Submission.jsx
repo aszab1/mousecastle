@@ -4,8 +4,8 @@ import mouse from '../../assets/images/mouse1-nobg.png';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { PrimaryButton } from './PrimaryButton';
-import tourinform from '../../assets/images/t-godollo.png';
-import Logo2 from '../../assets/images/Nostalgiafoto.png';
+// import tourinform from '../../assets/images/t-godollo.png';
+// import Logo2 from '../../assets/images/Nostalgiafoto.png';
 import Logo3 from '../../assets/images/favicon1.jpg';
 import { Passwords } from '../../assets/questions';
 import { SelectedLanguage } from './SelectedLanguage';
@@ -35,7 +35,6 @@ export default function Submission() {
     // Signature animation
 
     const magnusText = t('magnus') || ''
-    // console.log('magnusText:', magnusText)
     setSignatureText('')
     let index = 0
     if (magnusText.length > 0) {
@@ -97,13 +96,13 @@ export default function Submission() {
             <p className="flex md:text-xl items-center justify-center flex-wrap ">
               {/* {replaceWordWithLogo(t('goToTourinform'), 'Tourinform', tourinform)} */}
               {t('goToTourinform')}
-              <img style={{width: '80px'}} src={tourinform} alt="logo of Tourinform Gödöllő" />
+              {/* <img style={{width: '80px'}} src={tourinform} alt="logo of Tourinform Gödöllő" /> */}
         
             </p>
             <p className="flex md:text-xl items-center justify-center flex-wrap space-x-2">
               {/* {replaceWordWithLogo(t('goToNostalgia'), 'Nostalgiafoto', Logo2)} */}
               {t('goToNostalgia')}
-               <img style={{width: '80px'}} src={Logo2} alt="logo of Nosztalgiafotó" />
+               {/* <img style={{width: '80px'}} src={Logo2} alt="logo of Nosztalgiafotó" /> */}
             </p>
             
             <img

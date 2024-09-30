@@ -1,21 +1,21 @@
-import { useEffect, useState, useRef, useCallback } from 'react';
-import { Questions } from '../../assets/questions';
-import { useParams } from 'react-router';
-import { useTranslation } from 'react-i18next';
-import { QuestionNavigation } from './QuestionNavigation.jsx';
-import { InputBox } from './InputBoxes.jsx';
+import { useEffect, useState, useRef, useCallback } from 'react'
+import { Questions } from '../../assets/questions'
+import { useParams } from 'react-router'
+import { useTranslation } from 'react-i18next'
+import { QuestionNavigation } from './QuestionNavigation.jsx'
+import { InputBox } from './InputBoxes.jsx'
 
 
 export default function SingleQuestion() {
   const { id } = useParams()
   const inputRefs = useRef([])
   const { t, i18n } = useTranslation()
+  const currentLang = i18n.language
   const question = Questions[id]
   const answer = t(question.answer)
   const storageKey = `question-${id}-input`
   // Index for the letter hint (second letter)
   const hintIndex = 1
-  const isEnglish = i18n.language === 'en'
 
   const [inputSize, setInputSize] = useState(window.innerWidth > 768 ? 12 : 10)
 
@@ -32,7 +32,18 @@ export default function SingleQuestion() {
   }, [])
 
   const initInputWithHints = useCallback(() => {
-    // Hint logic specific to 4th question with ID '3'
+    // Hint logic for question ID 1 in HU version
+    if (id === '1' && currentLang === 'hu') {
+      return answer.split('').map(() => '') // No hint 
+    }
+
+    // Hint logic for question ID 2 in EN version
+    if (id === '2' && currentLang === 'en') {
+      return answer.split('').map((char, index) => (index === 0 ? char : '')) // First letter as hint
+    }
+
+
+    // Hint logic for question ID 3
     const hintForIdThree = () => {
       const [firstWord, secondWord] = answer.split(' ')
       return [
@@ -43,7 +54,7 @@ export default function SingleQuestion() {
     }
 
 
-    // hint logic for 6th qestiom, id 5
+    // Hint logic for qestion ID 5
     const hintForIdFive = () => {
       if (answer.includes(' ')) {
         const [firstWord, secondWord] = answer.split(' ')
@@ -69,7 +80,7 @@ export default function SingleQuestion() {
     } else {
       return defaultHint()
     }
-  }, [id, answer])
+  }, [id, answer, currentLang, hintIndex ])
 
 
   // Initializes the user input state, checking if there is saved input in sessionStorage
@@ -145,7 +156,9 @@ export default function SingleQuestion() {
         <img src={question.img_url} alt={`Question ${question.id}`} className="w-full max-h-64 object-contain mb-4" />
         <div className="question text-center mb-8">
           <h1 className="font-bold text-xl mb-4">
-            {t('question')} {question.id + 1}
+            {currentLang === 'hu'
+              ? `${question.id + 1}. ${t('question')}`
+              : `${t('question')} ${question.id + 1}`}
           </h1>
           <p className="whitespace-pre-line">{t(question.question)}</p>
         </div>
@@ -154,7 +167,7 @@ export default function SingleQuestion() {
       <div className="answer w-full max-w-md mb-10">
         <div className="flex flex-wrap justify-center">
           {userInput.map((char, index) => {
-            const applyCustomMargin = isEnglish && id === '0' && index === 2
+            const applyCustomMargin = currentLang === 'en' && id === '0' && index === 2
             const [firstWord, secondWord] = answer.split(' ')
 
             // Determine if the current index is in the second word or beyond the last character of the first word

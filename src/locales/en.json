@@ -1,8 +1,8 @@
 {
   "welcome": "Welcome!",
-  "intro1": "My name is Prince Magnus Mousecastle, the Governor of the Royal Palace.",
+  "intro1": "My name is Prince Magnus Mousecastle, Governor of the Royal Palace.",
   "intro2": "Today you can discover some of the secrets of my palace if you find the 7 game boxes upstairs.",
-  "clue": "If you solve the riddle and discover the password, you can collect your prize, a 'gold coin' or a sticker with an image of the palace at the Tourinform Office!",
+  "clue": "If you solve the riddle and discover the password, you can collect your prize, a 'gold coin' or a sticker with an image of me at the Tourinform Office!",
   "hint": "I can help you with a clue to the password:",
   "dessertHint": "It's my friend, Count Chester Gorgonzola's favorite dessert!",
   "goodLuck": "Good luck and have fun!",
@@ -20,7 +20,7 @@
     "answer": "YAWNING"
   },
   "3": {
-    "question": "If you had looked out of this window 150 years ago, you would have seen a gorgeous lake. The lake was named after the animals that swam in it. The lake was named after the animals that swam on it.",
+    "question": "If you had looked out of this window 150 years ago, you would have seen a gorgeous lake. The lake was named after the animals that swam on it.",
     "answer": "SWAN LAKE"
   },
   "4": {

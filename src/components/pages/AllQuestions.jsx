@@ -10,7 +10,8 @@ import { DisplayOnlyBox } from './InputBoxes.jsx';
 
 export const AllQuestions = () => {
   // 't' function from useTranslation dynamically renders text based on selected language
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const currentLang = i18n.language
   const passwordRef = useRef(null)
   const [scrollToPassword, setScrollToPassword] = useState(false)
   const { hash } = useLocation(); // destructure hash from location
@@ -72,7 +73,10 @@ export const AllQuestions = () => {
                       )
                     })
                   ) : (
-                    <span className="font-bold">{`${t('question')} ${question.id + 1}`}</span>
+                    <span className="font-bold">
+                      {currentLang === 'hu'
+                      ? `${question.id + 1}. ${t('question')}`
+                      : `${t('question')} ${question.id + 1}`}</span>
                   )}
                 </div>
                 <MdOutlineKeyboardDoubleArrowRight className="text-amber-800 shrink-0" />
