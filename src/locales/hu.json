@@ -2,13 +2,13 @@
   "welcome": "Üdvözöllek!",
   "intro1": "Herceg Egérváry Elemér vagyok, a kastély tulajdonosa.",
   "intro2": "A kastélyom titkaiból ma Te is felfedezhetsz néhányat, ha az emeleten megkeresed és jól megfigyeled mind a 7 darab EGÉRleső meseLYUKAT!",
-  "clue": "Sőt, ha ügyesen kitöltöd a rejtvényt és megfejted a jelszót, akkor a játék végén, a Tourinform irodában kastélyos aranytalléromat vagy a portrémmal díszített matricát kapsz!",
+  "clue": "Sőt, ha ügyesen kitöltöd a rejtvényt és megfejted a jelszót, akkor a játék végén, a Tourinform irodában kastélyos aranytallért vagy a portrémmal díszített matricát kapsz!",
   "hint": "Annyit segítek, hogy a jelszó:",
   "dessertHint": "gróf Gorgonzola Géza barátom kedvenc sütije. Mi is lenne más...",
   "goodLuck": "Sok szerencsét és jó szórakozást!",
   "start": "Kezdés",
   "0": {
-    "question": "Itt az előtérben báró Kastély-Haázy Sándor barátom fedezte fel ezeket a szép, angyalkás falfestéseket. Most éppen azon gondolkodunk,hogy hány angyalkalábat fogunk még találni. Az angyalka hozzánk legközelebb eső testrésze:",
+    "question": "Itt az előtérben báró Kastély-Haázy Sándor barátom fedezte fel ezeket a szép, angyalkás falfestéseket. Most éppen azon gondolkodunk, hogy hány angyalkalábat fogunk még találni. Az angyalka hozzánk legközelebb eső testrésze:",
     "answer": "LÁBUJJ"
   },
   "1": {
@@ -44,7 +44,7 @@
   "submit": "Küldés",
   "pwdConfimation": "A jelszavad:",
   "submissionQ": "Majdnem sikerült! Nézd meg újra a jelszót.",
-  "changePwdBtn": "Jelszó Módosítása",
+  "changePwdBtn": "Jelszó módosítása",
   "congrats": "Gratulálunk, hogy sikerült megfejtened a jelszót!",
   "goToTourinform": "Akkor most irány a földszinti Tourinform Iroda, ahol átveheted a nyereményedet!",
   "goToNostalgia": "És ne felejtsd el meglátogatni a Nosztalgiafotó műtermet!",
