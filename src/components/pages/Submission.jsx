@@ -4,8 +4,6 @@ import mouse from '../../assets/images/mouse1-nobg.png';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { PrimaryButton } from './PrimaryButton';
-// import tourinform from '../../assets/images/t-godollo.png';
-// import Logo2 from '../../assets/images/Nostalgiafoto.png';
 import Logo3 from '../../assets/images/favicon1.jpg';
 import { Passwords } from '../../assets/questions';
 import { SelectedLanguage } from './SelectedLanguage';
@@ -24,6 +22,7 @@ export default function Submission() {
   useEffect(() => {
     const savedPassword = sessionStorage.getItem(storageKey)
     setPassword(savedPassword || '')
+    
 
     const passwordData = Passwords.find((p) => p.lang === currentLang)
     if (passwordData) {
@@ -52,7 +51,7 @@ export default function Submission() {
 
   }, [storageKey, currentLang, t])
 
-
+  // console.log("Password at display point:", password)
 
   const handleChangePassword = () => {
     // Clear session storage and reset password input fields on the Password page
@@ -60,17 +59,7 @@ export default function Submission() {
     navigate('/questions#solve-password')
   }
 
-  // const replaceWordWithLogo = (text, word, logo) => {
-  //   const parts = text.split(word)
-  //   return (
-  //     <>
-  //       {parts[0]}
-  //       <img src={logo} alt={`${word} logo`} className="inline h-6 mx-1" />
-  //       {parts[1]}
-  //     </>
-  //   )
-  // }
-
+  
 
   return (
     <>
@@ -84,7 +73,12 @@ export default function Submission() {
           <>
 
             <h1 className="mt-4 text-lg md:text-xl">{t('pwdConfimation')}</h1>
-            <div className="password-display w-auto max-w-md text-center py-2 px-6 font-bold text-lg border-4 min-h-14 border-amber-400 bg-gradient-to-r from-amber-50 to-amber-100 shadow-md mx-auto">
+            <div 
+            style={{
+              direction: 'ltr',
+              unicodeBidi: 'normal',
+            }}
+            className="password-display w-auto max-w-md text-center py-2 px-6 font-bold text-lg border-4 min-h-14 border-amber-400 bg-gradient-to-r from-amber-50 to-amber-100 shadow-md mx-auto">
 
               {password ? (
                 <p className="text-amber-900">{password}</p>
@@ -94,15 +88,11 @@ export default function Submission() {
             </div>
             <h1 className="mt-2 md:text-xl">{t('congrats')}</h1>
             <p className="flex md:text-xl items-center justify-center flex-wrap ">
-              {/* {replaceWordWithLogo(t('goToTourinform'), 'Tourinform', tourinform)} */}
               {t('goToTourinform')}
-              {/* <img style={{width: '80px'}} src={tourinform} alt="logo of Tourinform Gödöllő" /> */}
         
             </p>
             <p className="flex md:text-xl items-center justify-center flex-wrap space-x-2">
-              {/* {replaceWordWithLogo(t('goToNostalgia'), 'Nostalgiafoto', Logo2)} */}
               {t('goToNostalgia')}
-               {/* <img style={{width: '80px'}} src={Logo2} alt="logo of Nosztalgiafotó" /> */}
             </p>
             
             <img
@@ -138,7 +128,12 @@ export default function Submission() {
               className="w-48 mt-14 mb-4 aspect-auto"
             />
             <h1 className="mt-4 text-lg">{t('pwdConfimation')}</h1>
-            <div className="password-display w-auto max-w-md text-center rounded py-4 px-10 font-bold text-lg border-4 min-h-14 border-amber-400 bg-slate-100 mx-auto">
+            <div 
+            style={{
+              direction: 'ltr',
+              unicodeBidi: 'normal',
+            }}
+            className="password-display w-auto max-w-md text-center rounded py-4 px-10 font-bold text-lg border-4 min-h-14 border-amber-400 bg-slate-100 mx-auto">
               {password ? (
                 <p className="text-rose-800">{password}</p>
               ) : (

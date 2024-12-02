@@ -46,6 +46,7 @@ export default function Password() {
       return joinedInput
     }
   }
+  // console.log("Formatted password:", formatPassword(passwordInput))
 
   const handleInputChange = (e, index) => {
     const { value } = e.target
@@ -80,7 +81,7 @@ export default function Password() {
     setPasswordInput(cleanedPassword)
   }, [storageKey, passwordData?.codes.length])
 
-
+  // console.log("Saved password:", sessionStorage.getItem(storageKey))
 
   return (
     <>
